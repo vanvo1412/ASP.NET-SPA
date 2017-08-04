@@ -1,0 +1,22 @@
+<md-sidenav-container class="sidenav-container">
+    <md-sidenav #sidenav class="sidenav" [opened]="!isScreenSmall()" [mode]="isScreenSmall() ? 'over' : 'side'">
+        <nav *ngFor="let category of sideNavItems.getItemsInCategories()">
+            <h3>{{category.name}}</h3>
+            <ul>
+                <li *ngFor="let component of category.items">
+                    <a [routerLink]="['/', component.id]" routerLinkActive="sidenav-item-selected">
+                        {{component.name}}
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </md-sidenav>
+
+    <div class="sidenav-content">
+        <page-header (toggleSidenav)="sidenav.toggle()"></page-header>
+        <div class="sidenav-content-wrapper">
+            <router-outlet></router-outlet>
+        </div>
+        <app-footer></app-footer>
+    </div>
+</md-sidenav-container>

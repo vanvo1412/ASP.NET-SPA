@@ -1,0 +1,28 @@
+<h1>Products</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!products"><em>Loading...</em></p>
+
+<table class='' *ngIf="products">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Product Number</th>
+            <th>Color</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+        <tbody>
+        <tr *ngFor="let product of products">
+            <td><img src="{{product.thumbnail}}" alt="thumbnail"/> </td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.productNumber }}</td>
+            <td>{{ product.color }}</td>
+            <td>${{ product.listPrice }}</td>
+            
+        </tr>
+    </tbody>
+</table>
+            
