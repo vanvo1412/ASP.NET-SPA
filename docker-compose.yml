@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  dnx.productdetail.api:
+    image: dnx.productdetail.api
+    build:
+      context: ./DNX.ProductDetail.API
+      dockerfile: Dockerfile
+
+  dnx.identity:
+    image: dnx.identity
+    build:
+      context: ./DNX.Identity
+      dockerfile: Dockerfile
