@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "faaa63afd06a358a93c9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4a39556bbee6c67129a3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -717,7 +717,7 @@ module.exports = (__webpack_require__(1))(2);
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = vendor_6b1f24935f0e9a3d2480;
+module.exports = vendor_37c0f8d2e52d49774331;
 
 /***/ }),
 /* 2 */
@@ -764,7 +764,7 @@ ComponentPageTitle = __decorate([
     core_1.Injectable()
 ], ComponentPageTitle);
 exports.ComponentPageTitle = ComponentPageTitle;
-
+//# sourceMappingURL=page-title.js.map
 
 /***/ }),
 /* 5 */
@@ -824,8 +824,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var style_manager_1 = __webpack_require__(26);
-var theme_storage_1 = __webpack_require__(28);
+var style_manager_1 = __webpack_require__(27);
+var theme_storage_1 = __webpack_require__(29);
 var material_1 = __webpack_require__(2);
 var common_1 = __webpack_require__(11);
 var ThemePicker = (function () {
@@ -1175,7 +1175,7 @@ __webpack_require__(53);
 __webpack_require__(66);
 var core_1 = __webpack_require__(0);
 var platform_browser_dynamic_1 = __webpack_require__(65);
-var app_module_client_1 = __webpack_require__(17);
+var app_module_client_1 = __webpack_require__(15);
 if (true) {
     module['hot'].accept();
     module['hot'].dispose(function () {
@@ -1467,6 +1467,162 @@ module.exports = (__webpack_require__(1))(56);
 
 "use strict";
 
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var platform_browser_1 = __webpack_require__(63);
+var forms_1 = __webpack_require__(62);
+var http_1 = __webpack_require__(9);
+var app_module_shared_1 = __webpack_require__(16);
+var animations_1 = __webpack_require__(10);
+var AppModule = (function () {
+    function AppModule() {
+    }
+    return AppModule;
+}());
+AppModule = __decorate([
+    core_1.NgModule({
+        bootstrap: app_module_shared_1.sharedConfig.bootstrap,
+        declarations: app_module_shared_1.sharedConfig.declarations,
+        imports: [
+            platform_browser_1.BrowserModule,
+            forms_1.FormsModule,
+            http_1.HttpModule,
+            animations_1.BrowserAnimationsModule
+        ].concat(app_module_shared_1.sharedConfig.imports),
+        providers: [
+            {
+                provide: 'ORIGIN_URL', useValue: "http://localhost:62030/",
+            },
+            {
+                provide: 'FLICKR_KEY', useValue: 'bc195b432b6b3e561d1bc5a6db8618b1'
+            },
+            {
+                provide: 'FLICKR_SECRET', useValue: 'c3fd6eadc64e486b'
+            }
+        ]
+    })
+], AppModule);
+exports.AppModule = AppModule;
+//# sourceMappingURL=app.module.client.js.map
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var sidenav_1 = __webpack_require__(26);
+var theme_picker_1 = __webpack_require__(28);
+var footer_module_1 = __webpack_require__(5);
+var navbar_module_1 = __webpack_require__(24);
+var router_1 = __webpack_require__(3);
+var app_component_1 = __webpack_require__(20);
+var home_component_1 = __webpack_require__(23);
+var fetchdata_component_1 = __webpack_require__(22);
+var counter_component_1 = __webpack_require__(21);
+var animations_1 = __webpack_require__(10);
+var material_1 = __webpack_require__(2);
+exports.sharedConfig = {
+    bootstrap: [app_component_1.AppComponent],
+    declarations: [
+        app_component_1.AppComponent,
+        counter_component_1.CounterComponent,
+        fetchdata_component_1.FetchDataComponent,
+        home_component_1.HomeComponent
+    ],
+    imports: [
+        router_1.RouterModule.forRoot([
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: 'home', component: home_component_1.HomeComponent },
+            {
+                path: 'counter', component: sidenav_1.SideNavComponent,
+                children: [
+                    { path: '', component: counter_component_1.CounterComponent }
+                ],
+            },
+            {
+                path: 'fetch-data', component: sidenav_1.SideNavComponent,
+                children: [
+                    { path: '', component: fetchdata_component_1.FetchDataComponent }
+                ],
+            },
+            { path: '**', redirectTo: 'home' }
+        ]),
+        animations_1.NoopAnimationsModule,
+        material_1.MdButtonModule,
+        material_1.MdIconModule,
+        material_1.MdCardModule,
+        navbar_module_1.NavBarModule,
+        footer_module_1.FooterModule,
+        theme_picker_1.ThemePickerModule,
+        sidenav_1.SideNavModule
+    ]
+};
+//# sourceMappingURL=app.module.shared.js.map
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var DOCS = [
+    {
+        id: 'app',
+        name: 'Application Navigation',
+        summary: '',
+        items: [
+            { id: 'home', name: 'Home', examples: ['autocomplete-overview'] },
+            { id: 'counter', name: 'Counter', examples: ['autocomplete-overview'] },
+            { id: 'fetch-data', name: 'Fetch data', examples: ['checkbox-configurable'] }
+        ]
+    }
+];
+var ALL_ITEMS = DOCS.reduce(function (result, category) { return result.concat(category.items); }, []);
+var SideNavItems = (function () {
+    function SideNavItems() {
+    }
+    SideNavItems.prototype.getItemsInCategories = function () {
+        return DOCS;
+    };
+    SideNavItems.prototype.getAllItems = function () {
+        return ALL_ITEMS;
+    };
+    SideNavItems.prototype.getItemById = function (id) {
+        return ALL_ITEMS.find(function (i) { return i.id === id; });
+    };
+    SideNavItems.prototype.getCategoryById = function (id) {
+        return DOCS.find(function (c) { return c.id == id; });
+    };
+    return SideNavItems;
+}());
+SideNavItems = __decorate([
+    core_1.Injectable()
+], SideNavItems);
+exports.SideNavItems = SideNavItems;
+//# sourceMappingURL=sidenav-items.js.map
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 module.exports = ansiHTML
 
@@ -1645,7 +1801,7 @@ ansiHTML.reset()
 
 
 /***/ }),
-/* 16 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1656,113 +1812,7 @@ module.exports = function () {
 
 
 /***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(0);
-var platform_browser_1 = __webpack_require__(63);
-var forms_1 = __webpack_require__(62);
-var http_1 = __webpack_require__(9);
-var app_module_shared_1 = __webpack_require__(18);
-var animations_1 = __webpack_require__(10);
-var AppModule = (function () {
-    function AppModule() {
-    }
-    return AppModule;
-}());
-AppModule = __decorate([
-    core_1.NgModule({
-        bootstrap: app_module_shared_1.sharedConfig.bootstrap,
-        declarations: app_module_shared_1.sharedConfig.declarations,
-        imports: [
-            platform_browser_1.BrowserModule,
-            forms_1.FormsModule,
-            http_1.HttpModule,
-            animations_1.BrowserAnimationsModule
-        ].concat(app_module_shared_1.sharedConfig.imports),
-        providers: [
-            {
-                provide: 'ORIGIN_URL', useValue: "http://localhost:62030/",
-            },
-            {
-                provide: 'FLICKR_KEY', useValue: 'bc195b432b6b3e561d1bc5a6db8618b1'
-            },
-            {
-                provide: 'FLICKR_SECRET', useValue: 'c3fd6eadc64e486b'
-            }
-        ]
-    })
-], AppModule);
-exports.AppModule = AppModule;
-
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var sidenav_1 = __webpack_require__(25);
-var theme_picker_1 = __webpack_require__(27);
-var footer_module_1 = __webpack_require__(5);
-var navbar_module_1 = __webpack_require__(23);
-var router_1 = __webpack_require__(3);
-var app_component_1 = __webpack_require__(19);
-var home_component_1 = __webpack_require__(22);
-var fetchdata_component_1 = __webpack_require__(21);
-var counter_component_1 = __webpack_require__(20);
-var animations_1 = __webpack_require__(10);
-var material_1 = __webpack_require__(2);
-exports.sharedConfig = {
-    bootstrap: [app_component_1.AppComponent],
-    declarations: [
-        app_component_1.AppComponent,
-        counter_component_1.CounterComponent,
-        fetchdata_component_1.FetchDataComponent,
-        home_component_1.HomeComponent
-    ],
-    imports: [
-        router_1.RouterModule.forRoot([
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: home_component_1.HomeComponent },
-            {
-                path: 'counter', component: sidenav_1.SideNavComponent,
-                children: [
-                    { path: '', component: counter_component_1.CounterComponent }
-                ],
-            },
-            {
-                path: 'fetch-data', component: sidenav_1.SideNavComponent,
-                children: [
-                    { path: '', component: fetchdata_component_1.FetchDataComponent }
-                ],
-            },
-            { path: '**', redirectTo: 'home' }
-        ]),
-        animations_1.NoopAnimationsModule,
-        material_1.MdButtonModule,
-        material_1.MdIconModule,
-        material_1.MdCardModule,
-        navbar_module_1.NavBarModule,
-        footer_module_1.FooterModule,
-        theme_picker_1.ThemePickerModule,
-        sidenav_1.SideNavModule
-    ]
-};
-
-
-/***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1824,7 +1874,7 @@ function resetScrollPosition() {
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1864,7 +1914,7 @@ exports.CounterComponent = CounterComponent;
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1909,7 +1959,7 @@ exports.FetchDataComponent = FetchDataComponent;
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1942,7 +1992,7 @@ exports.HomeComponent = HomeComponent;
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1987,7 +2037,7 @@ exports.NavBarModule = NavBarModule;
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2046,7 +2096,7 @@ exports.PageHeaderModule = PageHeaderModule;
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2069,8 +2119,8 @@ var material_1 = __webpack_require__(2);
 var router_1 = __webpack_require__(3);
 var common_1 = __webpack_require__(11);
 var footer_module_1 = __webpack_require__(5);
-var page_header_1 = __webpack_require__(24);
-var sidenav_items_1 = __webpack_require__(29);
+var page_header_1 = __webpack_require__(25);
+var sidenav_items_1 = __webpack_require__(17);
 var core_2 = __webpack_require__(0);
 var SMALL_WIDTH_BREAKPOINT = 840;
 var SideNavComponent = (function () {
@@ -2127,7 +2177,7 @@ exports.SideNavModule = SideNavModule;
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2187,7 +2237,7 @@ function getClassNameForKey(key) {
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2200,7 +2250,7 @@ __export(__webpack_require__(6));
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2246,56 +2296,6 @@ ThemeStorage = ThemeStorage_1 = __decorate([
 ], ThemeStorage);
 exports.ThemeStorage = ThemeStorage;
 var ThemeStorage_1;
-
-
-/***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(0);
-var DOCS = [
-    {
-        id: 'app',
-        name: 'Application Navigation',
-        summary: '',
-        items: [
-            { id: 'home', name: 'Home', examples: ['autocomplete-overview'] },
-            { id: 'counter', name: 'Counter', examples: ['autocomplete-overview'] },
-            { id: 'fetch-data', name: 'Fetch data', examples: ['checkbox-configurable'] }
-        ]
-    }
-];
-var ALL_ITEMS = DOCS.reduce(function (result, category) { return result.concat(category.items); }, []);
-var SideNavItems = (function () {
-    function SideNavItems() {
-    }
-    SideNavItems.prototype.getItemsInCategories = function () {
-        return DOCS;
-    };
-    SideNavItems.prototype.getAllItems = function () {
-        return ALL_ITEMS;
-    };
-    SideNavItems.prototype.getItemById = function (id) {
-        return ALL_ITEMS.find(function (i) { return i.id === id; });
-    };
-    SideNavItems.prototype.getCategoryById = function (id) {
-        return DOCS.find(function (c) { return c.id == id; });
-    };
-    return SideNavItems;
-}());
-SideNavItems = __decorate([
-    core_1.Injectable()
-], SideNavItems);
-exports.SideNavItems = SideNavItems;
 
 
 /***/ }),
@@ -4068,7 +4068,7 @@ Observable_1.Observable.prototype.first = first_1.first;
 
 "use strict";
 
-var ansiRegex = __webpack_require__(16)();
+var ansiRegex = __webpack_require__(19)();
 
 module.exports = function (str) {
 	return typeof str === 'string' ? str.replace(ansiRegex, '') : str;
@@ -4105,7 +4105,7 @@ for (var key in styles) {
   clientOverlay.style[key] = styles[key];
 }
 
-var ansiHTML = __webpack_require__(15);
+var ansiHTML = __webpack_require__(18);
 var colors = {
   reset: ['transparent', 'transparent'],
   black: '181818',

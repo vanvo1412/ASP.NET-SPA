@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using DNX.ProductDetail.API.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 
 namespace DNX.ProductDetail.API
 {
@@ -35,7 +37,10 @@ namespace DNX.ProductDetail.API
             {
                 builder.WithOrigins("http://localhost:5000");
             }));
-
+            //services.Configure<MvcOptions>(options =>
+            //{
+            //    options.Filters.Add(new CorsAuthorizationFilterFactory("DnxPolicy"));
+            //});
             var connectionString = Configuration.GetConnectionString("DNXDatabaseLocal");
             services.AddDbContext<DnxContext>(opts => opts.UseSqlServer(connectionString));
         }
@@ -45,6 +50,14 @@ namespace DNX.ProductDetail.API
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
+            {
+                Authority = "http://localhost:5000",
+                RequireHttpsMetadata = false,
+
+                ApiName = "api1"
+            });
 
             app.UseMvc();
             app.UseCors("DnxPolicy");

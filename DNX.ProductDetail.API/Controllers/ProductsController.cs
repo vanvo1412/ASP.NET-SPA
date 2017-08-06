@@ -12,7 +12,6 @@ namespace DNX.ProductDetail.API.Controllers
 {
     [Produces("application/json")]
     [Route("api/Products")]
-    [EnableCors("DnxPolicy")]
     public class ProductsController : Controller
     {
         private readonly DnxContext _context;

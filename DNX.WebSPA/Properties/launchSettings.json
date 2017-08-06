@@ -8,15 +8,17 @@
     }
   },
   "profiles": {
+    "DNX_SPA": {
+      "commandName": "Project",
+      "applicationUrl": "http://localhost:5002/"
+    },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
-    },
-    "DNX_SPA": {
-      "commandName": "Project"
     }
+
   }
 }

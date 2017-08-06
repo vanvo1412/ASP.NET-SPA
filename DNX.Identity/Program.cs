@@ -14,6 +14,7 @@ namespace DNX.Identity
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
+                //.UseUrls("http://localhost:5000")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
                 .UseApplicationInsights()

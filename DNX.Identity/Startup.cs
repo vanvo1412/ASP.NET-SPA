@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using IdentityServerConfiguration;
+using IdentityServer4;
 
 namespace DNX.Identity
 {
@@ -29,6 +31,12 @@ namespace DNX.Identity
         {
             // Add framework services.
             services.AddMvc();
+
+            // configure identity server with in-memory stores, keys, clients and resources
+            services.AddIdentityServer()
+                .AddTemporarySigningCredential()
+                .AddInMemoryApiResources(Config.GetApiResources())
+                .AddInMemoryClients(Config.GetClients());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +46,7 @@ namespace DNX.Identity
             loggerFactory.AddDebug();
 
             app.UseMvc();
+            app.UseIdentityServer();
         }
     }
 }
