@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4a39556bbee6c67129a3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8dbaefa0b604ec021e85"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -704,7 +704,7 @@
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return hotCreateRequire(67)(__webpack_require__.s = 67);
+/******/ 	return hotCreateRequire(49)(__webpack_require__.s = 49);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -720,231 +720,11 @@ module.exports = (__webpack_require__(1))(2);
 module.exports = vendor_37c0f8d2e52d49774331;
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(1))(50);
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(1))(53);
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(0);
-/**
- * Service responsible for setting the title that appears above the components and guide pages.
- */
-var ComponentPageTitle = (function () {
-    function ComponentPageTitle() {
-        this._title = '';
-    }
-    Object.defineProperty(ComponentPageTitle.prototype, "title", {
-        get: function () { return this._title; },
-        set: function (title) { this._title = title; },
-        enumerable: true,
-        configurable: true
-    });
-    return ComponentPageTitle;
-}());
-ComponentPageTitle = __decorate([
-    core_1.Injectable()
-], ComponentPageTitle);
-exports.ComponentPageTitle = ComponentPageTitle;
-//# sourceMappingURL=page-title.js.map
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(0);
-var Footer = (function () {
-    function Footer() {
-    }
-    return Footer;
-}());
-Footer = __decorate([
-    core_1.Component({
-        selector: 'app-footer',
-        template: __webpack_require__(36),
-        styles: [__webpack_require__(47)]
-    })
-], Footer);
-exports.Footer = Footer;
-var FooterModule = (function () {
-    function FooterModule() {
-    }
-    return FooterModule;
-}());
-FooterModule = __decorate([
-    core_1.NgModule({
-        exports: [Footer],
-        declarations: [Footer],
-    })
-], FooterModule);
-exports.FooterModule = FooterModule;
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(0);
-var style_manager_1 = __webpack_require__(27);
-var theme_storage_1 = __webpack_require__(29);
-var material_1 = __webpack_require__(2);
-var common_1 = __webpack_require__(11);
-var ThemePicker = (function () {
-    function ThemePicker(styleManager, _themeStorage) {
-        this.styleManager = styleManager;
-        this._themeStorage = _themeStorage;
-        // themes = [
-        //   {
-        //     primary: '#673AB7',
-        //     accent: '#FFC107',
-        //     href: 'deeppurple-amber.css',
-        //     isDark: false,
-        //   },
-        //   {
-        //     primary: '#3F51B5',
-        //     accent: '#E91E63',
-        //     href: 'indigo-pink.css',
-        //     isDark: false,
-        //     isDefault: true,
-        //   },
-        //   {
-        //     primary: '#E91E63',
-        //     accent: '#607D8B',
-        //     href: 'pink-bluegrey.css',
-        //     isDark: true,
-        //   },
-        //   {
-        //     primary: '#9C27B0',
-        //     accent: '#4CAF50',
-        //     href: 'purple-green.css',
-        //     isDark: true,
-        //   },
-        // ];
-        this.themes = [
-            {
-                primary: '#673AB7',
-                accent: '#FFC107',
-                href: 'deeppurpleAmber.css',
-                isDark: false,
-            },
-            {
-                primary: '#3F51B5',
-                accent: '#E91E63',
-                href: 'indigoPink.css',
-                isDark: false,
-                isDefault: true,
-            },
-            {
-                primary: '#E91E63',
-                accent: '#607D8B',
-                href: 'pinkBluegrey.css',
-                isDark: true,
-            },
-            {
-                primary: '#9C27B0',
-                accent: '#4CAF50',
-                href: 'purpleGreen.css',
-                isDark: true,
-            },
-        ];
-        var currentTheme = this._themeStorage.getStoredTheme();
-        if (currentTheme) {
-            this.installTheme(currentTheme);
-        }
-    }
-    ThemePicker.prototype.installTheme = function (theme) {
-        this.currentTheme = this._getCurrentThemeFromHref(theme.href);
-        if (theme.isDefault) {
-            this.styleManager.removeStyle('theme');
-        }
-        else {
-            this.styleManager.setStyle('theme', "dist/" + theme.href);
-        }
-        if (this.currentTheme) {
-            this._themeStorage.storeTheme(this.currentTheme);
-        }
-    };
-    ThemePicker.prototype._getCurrentThemeFromHref = function (href) {
-        return this.themes.find(function (theme) { return theme.href === href; });
-    };
-    return ThemePicker;
-}());
-ThemePicker = __decorate([
-    core_1.Component({
-        selector: 'theme-picker',
-        template: __webpack_require__(41),
-        styles: [__webpack_require__(52)],
-        changeDetection: core_1.ChangeDetectionStrategy.OnPush,
-        encapsulation: core_1.ViewEncapsulation.None,
-        host: { 'aria-hidden': 'true' },
-    }),
-    __metadata("design:paramtypes", [style_manager_1.StyleManager,
-        theme_storage_1.ThemeStorage])
-], ThemePicker);
-exports.ThemePicker = ThemePicker;
-var ThemePickerModule = (function () {
-    function ThemePickerModule() {
-    }
-    return ThemePickerModule;
-}());
-ThemePickerModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            material_1.MdButtonModule,
-            material_1.MdIconModule,
-            material_1.MdMenuModule,
-            material_1.MdGridListModule,
-            material_1.MdTooltipModule,
-            common_1.CommonModule
-        ],
-        exports: [ThemePicker],
-        declarations: [ThemePicker],
-        providers: [style_manager_1.StyleManager, theme_storage_1.ThemeStorage],
-    })
-], ThemePickerModule);
-exports.ThemePickerModule = ThemePickerModule;
-
-
-/***/ }),
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
 /* 7 */
 /***/ (function(module, exports) {
 
@@ -1141,41 +921,20 @@ module.exports = Html5Entities;
 
 
 /***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojRkZGRkZGO30NCgkuc3Qxe29wYWNpdHk6MC45O30NCjwvc3R5bGU+DQo8Zz4NCgk8Zz4NCgkJPHBvbHlnb24gY2xhc3M9InN0MCIgcG9pbnRzPSIxMjUsMTUzLjQgMTAwLjMsMTUzLjQgODguNiwxODIuNiA4OC42LDE4Mi42IDY2LjksMTgyLjYgNjYuOCwxODIuNiAxMjUsNTIuMSAxMjUsNTIuMiAxMjUsNTIuMiANCgkJCTEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwxNTMuNCAJCSIvPg0KCQk8cG9seWdvbiBjbGFzcz0ic3QwIiBwb2ludHM9IjEwOCwxMzUuNCAxMjUsMTM1LjQgMTI1LDEzNS40IDEyNSw5NC41IAkJIi8+DQoJPC9nPg0KCTxnIGNsYXNzPSJzdDEiPg0KCQk8cG9seWdvbiBjbGFzcz0ic3QwIiBwb2ludHM9IjEyNSwxNTMuNCAxNDkuNywxNTMuNCAxNjEuNCwxODIuNiAxNjEuNCwxODIuNiAxODMuMSwxODIuNiAxODMuMiwxODIuNiAxMjUsNTIuMSAxMjUsNTIuMiAxMjUsNTIuMiANCgkJCTEyNSwzMCAxMjUsMzAgMjE4LjEsNjMuMiAyMDMuOSwxODYuMyAxMjUsMjMwIDEyNSwyMzAgMTI1LDE1My40IAkJIi8+DQoJCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTQyLDEzNS40IDEyNSwxMzUuNCAxMjUsMTM1LjQgMTI1LDk0LjUgCQkiLz4NCgk8L2c+DQo8L2c+DQo8L3N2Zz4NCg=="
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(1))(30);
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(1))(52);
-
-/***/ }),
+/* 8 */,
+/* 9 */,
+/* 10 */,
 /* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(1))(7);
-
-/***/ }),
-/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(53);
-__webpack_require__(66);
+__webpack_require__(35);
+__webpack_require__(48);
 var core_1 = __webpack_require__(0);
-var platform_browser_dynamic_1 = __webpack_require__(65);
-var app_module_client_1 = __webpack_require__(15);
+var platform_browser_dynamic_1 = __webpack_require__(47);
+var app_module_client_1 = __webpack_require__(14);
 if (true) {
     module['hot'].accept();
     module['hot'].dispose(function () {
@@ -1195,7 +954,7 @@ var modulePromise = platform_browser_dynamic_1.platformBrowserDynamic().bootstra
 
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(__resourceQuery, module) {/*eslint-env browser*/
@@ -1211,7 +970,7 @@ var options = {
   name: ''
 };
 if (true) {
-  var querystring = __webpack_require__(44);
+  var querystring = __webpack_require__(34);
   var overrides = querystring.parse(__resourceQuery.slice(1));
   if (overrides.path) options.path = overrides.path;
   if (overrides.timeout) options.timeout = overrides.timeout;
@@ -1331,11 +1090,11 @@ if (typeof window !== 'undefined') {
 }
 
 function createReporter() {
-  var strip = __webpack_require__(55);
+  var strip = __webpack_require__(37);
 
   var overlay;
   if (typeof document !== 'undefined' && options.overlay) {
-    overlay = __webpack_require__(56);
+    overlay = __webpack_require__(38);
   }
 
   var styles = {
@@ -1388,7 +1147,7 @@ function createReporter() {
   };
 }
 
-var processUpdate = __webpack_require__(57);
+var processUpdate = __webpack_require__(39);
 
 var customHandler;
 var subscribeAllHandler;
@@ -1453,172 +1212,35 @@ if (module) {
   };
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, "?path=%2F__webpack_hmr", __webpack_require__(58)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, "?path=%2F__webpack_hmr", __webpack_require__(40)(module)))
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(1))(56);
 
 /***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 14 */
+/***/ (function(module, exports) {
 
 "use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(0);
-var platform_browser_1 = __webpack_require__(63);
-var forms_1 = __webpack_require__(62);
-var http_1 = __webpack_require__(9);
-var app_module_shared_1 = __webpack_require__(16);
-var animations_1 = __webpack_require__(10);
-var AppModule = (function () {
-    function AppModule() {
-    }
-    return AppModule;
-}());
-AppModule = __decorate([
-    core_1.NgModule({
-        bootstrap: app_module_shared_1.sharedConfig.bootstrap,
-        declarations: app_module_shared_1.sharedConfig.declarations,
-        imports: [
-            platform_browser_1.BrowserModule,
-            forms_1.FormsModule,
-            http_1.HttpModule,
-            animations_1.BrowserAnimationsModule
-        ].concat(app_module_shared_1.sharedConfig.imports),
-        providers: [
-            {
-                provide: 'ORIGIN_URL', useValue: "http://localhost:62030/",
-            },
-            {
-                provide: 'FLICKR_KEY', useValue: 'bc195b432b6b3e561d1bc5a6db8618b1'
-            },
-            {
-                provide: 'FLICKR_SECRET', useValue: 'c3fd6eadc64e486b'
-            }
-        ]
-    })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.client.js.map
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\Users\\vanvd\\Documents\\Visual Studio 2017\\Projects\\DNX\\DNX.WebSPA\\ClientApp\\app\\app.module.client.js'\n    at Error (native)");
 
 /***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var sidenav_1 = __webpack_require__(26);
-var theme_picker_1 = __webpack_require__(28);
-var footer_module_1 = __webpack_require__(5);
-var navbar_module_1 = __webpack_require__(24);
-var router_1 = __webpack_require__(3);
-var app_component_1 = __webpack_require__(20);
-var home_component_1 = __webpack_require__(23);
-var fetchdata_component_1 = __webpack_require__(22);
-var counter_component_1 = __webpack_require__(21);
-var animations_1 = __webpack_require__(10);
-var material_1 = __webpack_require__(2);
-exports.sharedConfig = {
-    bootstrap: [app_component_1.AppComponent],
-    declarations: [
-        app_component_1.AppComponent,
-        counter_component_1.CounterComponent,
-        fetchdata_component_1.FetchDataComponent,
-        home_component_1.HomeComponent
-    ],
-    imports: [
-        router_1.RouterModule.forRoot([
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: home_component_1.HomeComponent },
-            {
-                path: 'counter', component: sidenav_1.SideNavComponent,
-                children: [
-                    { path: '', component: counter_component_1.CounterComponent }
-                ],
-            },
-            {
-                path: 'fetch-data', component: sidenav_1.SideNavComponent,
-                children: [
-                    { path: '', component: fetchdata_component_1.FetchDataComponent }
-                ],
-            },
-            { path: '**', redirectTo: 'home' }
-        ]),
-        animations_1.NoopAnimationsModule,
-        material_1.MdButtonModule,
-        material_1.MdIconModule,
-        material_1.MdCardModule,
-        navbar_module_1.NavBarModule,
-        footer_module_1.FooterModule,
-        theme_picker_1.ThemePickerModule,
-        sidenav_1.SideNavModule
-    ]
-};
-//# sourceMappingURL=app.module.shared.js.map
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(0);
-var DOCS = [
-    {
-        id: 'app',
-        name: 'Application Navigation',
-        summary: '',
-        items: [
-            { id: 'home', name: 'Home', examples: ['autocomplete-overview'] },
-            { id: 'counter', name: 'Counter', examples: ['autocomplete-overview'] },
-            { id: 'fetch-data', name: 'Fetch data', examples: ['checkbox-configurable'] }
-        ]
-    }
-];
-var ALL_ITEMS = DOCS.reduce(function (result, category) { return result.concat(category.items); }, []);
-var SideNavItems = (function () {
-    function SideNavItems() {
-    }
-    SideNavItems.prototype.getItemsInCategories = function () {
-        return DOCS;
-    };
-    SideNavItems.prototype.getAllItems = function () {
-        return ALL_ITEMS;
-    };
-    SideNavItems.prototype.getItemById = function (id) {
-        return ALL_ITEMS.find(function (i) { return i.id === id; });
-    };
-    SideNavItems.prototype.getCategoryById = function (id) {
-        return DOCS.find(function (c) { return c.id == id; });
-    };
-    return SideNavItems;
-}());
-SideNavItems = __decorate([
-    core_1.Injectable()
-], SideNavItems);
-exports.SideNavItems = SideNavItems;
-//# sourceMappingURL=sidenav-items.js.map
-
-/***/ }),
-/* 18 */
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1801,7 +1423,7 @@ ansiHTML.reset()
 
 
 /***/ }),
-/* 19 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1812,506 +1434,19 @@ module.exports = function () {
 
 
 /***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(0);
-var router_1 = __webpack_require__(3);
-var AppComponent = (function () {
-    function AppComponent(router) {
-        var _this = this;
-        this.showShadow = false;
-        var previousRoute = router.routerState.snapshot.url;
-        router.events.subscribe(function (data) {
-            _this.showShadow = data.url.indexOf('/home') != 0 && !(data.url === "/");
-            // We want to reset the scroll position on navigation except when navigating within
-            // the documentation for a single component.
-            if (!isNavigationWithinComponentView(previousRoute, data.url)) {
-                resetScrollPosition();
-            }
-            previousRoute = data.url;
-        });
-    }
-    return AppComponent;
-}());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'app',
-        template: __webpack_require__(33),
-        styles: [__webpack_require__(45)],
-        encapsulation: core_1.ViewEncapsulation.None,
-    }),
-    __metadata("design:paramtypes", [router_1.Router])
-], AppComponent);
-exports.AppComponent = AppComponent;
-function isNavigationWithinComponentView(oldUrl, newUrl) {
-    var componentViewExpression = /counter\/(\w+)/;
-    return oldUrl && newUrl
-        && componentViewExpression.test(oldUrl)
-        && componentViewExpression.test(newUrl)
-        && oldUrl.match(componentViewExpression)[1] === newUrl.match(componentViewExpression)[1];
-}
-function resetScrollPosition() {
-    if (typeof document === 'object' && document) {
-        var sidenavContent = document.querySelector('.mat-sidenav-content');
-        if (sidenavContent) {
-            sidenavContent.scrollTop = 0;
-        }
-    }
-}
-
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(0);
-var page_title_1 = __webpack_require__(4);
-var CounterComponent = (function () {
-    function CounterComponent(_componentPageTitle) {
-        this._componentPageTitle = _componentPageTitle;
-        this.currentCount = 0;
-        _componentPageTitle.title = "Counter";
-    }
-    CounterComponent.prototype.incrementCounter = function () {
-        this.currentCount++;
-    };
-    return CounterComponent;
-}());
-CounterComponent = __decorate([
-    core_1.Component({
-        selector: 'counter',
-        template: __webpack_require__(34),
-        styles: [__webpack_require__(46)]
-    }),
-    __metadata("design:paramtypes", [page_title_1.ComponentPageTitle])
-], CounterComponent);
-exports.CounterComponent = CounterComponent;
-
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var page_title_1 = __webpack_require__(4);
-var core_1 = __webpack_require__(0);
-var http_1 = __webpack_require__(9);
-var FetchDataComponent = (function () {
-    function FetchDataComponent(http, originUrl, _componentPageTitle) {
-        var _this = this;
-        this._componentPageTitle = _componentPageTitle;
-        _componentPageTitle.title = "Fetch data";
-        http.get(originUrl + 'api/products').subscribe(function (result) {
-            console.log(result);
-            _this.products = result.json();
-        });
-    }
-    return FetchDataComponent;
-}());
-FetchDataComponent = __decorate([
-    core_1.Component({
-        selector: 'fetchdata',
-        template: __webpack_require__(35)
-    }),
-    __param(1, core_1.Inject('ORIGIN_URL')),
-    __metadata("design:paramtypes", [http_1.Http, String, page_title_1.ComponentPageTitle])
-], FetchDataComponent);
-exports.FetchDataComponent = FetchDataComponent;
-
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(0);
-var HomeComponent = (function () {
-    function HomeComponent() {
-    }
-    return HomeComponent;
-}());
-HomeComponent = __decorate([
-    core_1.Component({
-        selector: 'app-home',
-        template: __webpack_require__(37),
-        styles: [__webpack_require__(48)]
-    }),
-    __metadata("design:paramtypes", [])
-], HomeComponent);
-exports.HomeComponent = HomeComponent;
-
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var theme_picker_1 = __webpack_require__(6);
-var core_1 = __webpack_require__(0);
-var material_1 = __webpack_require__(2);
-var router_1 = __webpack_require__(3);
-var NavBar = (function () {
-    function NavBar() {
-    }
-    return NavBar;
-}());
-NavBar = __decorate([
-    core_1.Component({
-        selector: 'app-navbar',
-        template: __webpack_require__(38),
-        styles: [__webpack_require__(49)]
-    })
-], NavBar);
-exports.NavBar = NavBar;
-var NavBarModule = (function () {
-    function NavBarModule() {
-    }
-    return NavBarModule;
-}());
-NavBarModule = __decorate([
-    core_1.NgModule({
-        imports: [material_1.MdButtonModule, router_1.RouterModule, theme_picker_1.ThemePickerModule],
-        exports: [NavBar],
-        declarations: [NavBar],
-    })
-], NavBarModule);
-exports.NavBarModule = NavBarModule;
-
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(0);
-__webpack_require__(54);
-var page_title_1 = __webpack_require__(4);
-var material_1 = __webpack_require__(2);
-var PageHeaderComponent = (function () {
-    function PageHeaderComponent(_componentPageTitle) {
-        this._componentPageTitle = _componentPageTitle;
-        this.toggleSidenav = new core_1.EventEmitter();
-    }
-    PageHeaderComponent.prototype.getTitle = function () {
-        return this._componentPageTitle.title;
-    };
-    return PageHeaderComponent;
-}());
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", Object)
-], PageHeaderComponent.prototype, "toggleSidenav", void 0);
-PageHeaderComponent = __decorate([
-    core_1.Component({
-        selector: 'page-header',
-        template: __webpack_require__(39),
-        styles: [__webpack_require__(50)]
-    }),
-    __metadata("design:paramtypes", [page_title_1.ComponentPageTitle])
-], PageHeaderComponent);
-exports.PageHeaderComponent = PageHeaderComponent;
-var PageHeaderModule = (function () {
-    function PageHeaderModule() {
-    }
-    return PageHeaderModule;
-}());
-PageHeaderModule = __decorate([
-    core_1.NgModule({
-        imports: [material_1.MdButtonModule, material_1.MdIconModule],
-        exports: [PageHeaderComponent],
-        declarations: [PageHeaderComponent],
-        providers: [page_title_1.ComponentPageTitle],
-    })
-], PageHeaderModule);
-exports.PageHeaderModule = PageHeaderModule;
-
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(0);
-var material_1 = __webpack_require__(2);
-var router_1 = __webpack_require__(3);
-var common_1 = __webpack_require__(11);
-var footer_module_1 = __webpack_require__(5);
-var page_header_1 = __webpack_require__(25);
-var sidenav_items_1 = __webpack_require__(17);
-var core_2 = __webpack_require__(0);
-var SMALL_WIDTH_BREAKPOINT = 840;
-var SideNavComponent = (function () {
-    function SideNavComponent(sideNavItems, _router, _platformId) {
-        this.sideNavItems = sideNavItems;
-        this._router = _router;
-        this.isBrowser = common_1.isPlatformBrowser(_platformId);
-    }
-    SideNavComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this._router.events.subscribe(function () {
-            if (_this.isScreenSmall()) {
-                _this.sidenav.close();
-            }
-        });
-    };
-    SideNavComponent.prototype.isScreenSmall = function () {
-        if (this.isBrowser) {
-            return window.matchMedia("(max-width: " + SMALL_WIDTH_BREAKPOINT + "px)").matches;
-        }
-        return false;
-    };
-    return SideNavComponent;
-}());
-__decorate([
-    core_1.ViewChild(material_1.MdSidenav),
-    __metadata("design:type", material_1.MdSidenav)
-], SideNavComponent.prototype, "sidenav", void 0);
-SideNavComponent = __decorate([
-    core_1.Component({
-        selector: 'app-sidenav',
-        template: __webpack_require__(40),
-        styles: [__webpack_require__(51)],
-        encapsulation: core_1.ViewEncapsulation.None,
-    }),
-    __param(2, core_1.Inject(core_2.PLATFORM_ID)),
-    __metadata("design:paramtypes", [sidenav_items_1.SideNavItems, router_1.Router, String])
-], SideNavComponent);
-exports.SideNavComponent = SideNavComponent;
-var SideNavModule = (function () {
-    function SideNavModule() {
-    }
-    return SideNavModule;
-}());
-SideNavModule = __decorate([
-    core_1.NgModule({
-        imports: [material_1.MdSidenavModule, router_1.RouterModule, common_1.CommonModule, page_header_1.PageHeaderModule, footer_module_1.FooterModule],
-        exports: [SideNavComponent],
-        declarations: [SideNavComponent],
-        providers: [sidenav_items_1.SideNavItems],
-    })
-], SideNavModule);
-exports.SideNavModule = SideNavModule;
-
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(0);
-/**
- * Class for managing stylesheets. Stylesheets are loaded into named slots so that they can be
- * removed or changed later.
- */
-var StyleManager = (function () {
-    function StyleManager() {
-    }
-    /**
-     * Set the stylesheet with the specified key.
-     */
-    StyleManager.prototype.setStyle = function (key, href) {
-        getLinkElementForKey(key).setAttribute('href', href);
-    };
-    /**
-     * Remove the stylesheet with the specified key.
-     */
-    StyleManager.prototype.removeStyle = function (key) {
-        var existingLinkElement = getExistingLinkElementByKey(key);
-        if (existingLinkElement) {
-            document.head.removeChild(existingLinkElement);
-        }
-    };
-    return StyleManager;
-}());
-StyleManager = __decorate([
-    core_1.Injectable()
-], StyleManager);
-exports.StyleManager = StyleManager;
-function getLinkElementForKey(key) {
-    return getExistingLinkElementByKey(key) || createLinkElementWithKey(key);
-}
-function getExistingLinkElementByKey(key) {
-    return document.head.querySelector("link[rel=\"stylesheet\"]." + getClassNameForKey(key));
-}
-function createLinkElementWithKey(key) {
-    var linkEl = document.createElement('link');
-    linkEl.setAttribute('rel', 'stylesheet');
-    linkEl.classList.add(getClassNameForKey(key));
-    document.head.appendChild(linkEl);
-    return linkEl;
-}
-function getClassNameForKey(key) {
-    return "style-manager-" + key;
-}
-
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(6));
-
-
-/***/ }),
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(0);
-var ThemeStorage = ThemeStorage_1 = (function () {
-    function ThemeStorage() {
-        this.onThemeUpdate = new core_1.EventEmitter();
-    }
-    ThemeStorage.prototype.storeTheme = function (theme) {
-        try {
-            window.localStorage[ThemeStorage_1.storageKey] = JSON.stringify(theme);
-        }
-        catch (e) { }
-        this.onThemeUpdate.emit(theme);
-    };
-    ThemeStorage.prototype.getStoredTheme = function () {
-        try {
-            return JSON.parse(window.localStorage[ThemeStorage_1.storageKey] || null);
-        }
-        catch (e) {
-            return null;
-        }
-    };
-    ThemeStorage.prototype.clearStorage = function () {
-        try {
-            window.localStorage.removeItem(ThemeStorage_1.storageKey);
-        }
-        catch (e) { }
-    };
-    return ThemeStorage;
-}());
-ThemeStorage.storageKey = 'docs-theme-storage-current';
-ThemeStorage = ThemeStorage_1 = __decorate([
-    core_1.Injectable()
-], ThemeStorage);
-exports.ThemeStorage = ThemeStorage;
-var ThemeStorage_1;
-
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
 module.exports = {
-  XmlEntities: __webpack_require__(32),
-  Html4Entities: __webpack_require__(31),
+  XmlEntities: __webpack_require__(31),
+  Html4Entities: __webpack_require__(30),
   Html5Entities: __webpack_require__(7),
   AllHtmlEntities: __webpack_require__(7)
 };
 
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports) {
 
 var HTML_ALPHA = ['apos', 'nbsp', 'iexcl', 'cent', 'pound', 'curren', 'yen', 'brvbar', 'sect', 'uml', 'copy', 'ordf', 'laquo', 'not', 'shy', 'reg', 'macr', 'deg', 'plusmn', 'sup2', 'sup3', 'acute', 'micro', 'para', 'middot', 'cedil', 'sup1', 'ordm', 'raquo', 'frac14', 'frac12', 'frac34', 'iquest', 'Agrave', 'Aacute', 'Acirc', 'Atilde', 'Auml', 'Aring', 'Aelig', 'Ccedil', 'Egrave', 'Eacute', 'Ecirc', 'Euml', 'Igrave', 'Iacute', 'Icirc', 'Iuml', 'ETH', 'Ntilde', 'Ograve', 'Oacute', 'Ocirc', 'Otilde', 'Ouml', 'times', 'Oslash', 'Ugrave', 'Uacute', 'Ucirc', 'Uuml', 'Yacute', 'THORN', 'szlig', 'agrave', 'aacute', 'acirc', 'atilde', 'auml', 'aring', 'aelig', 'ccedil', 'egrave', 'eacute', 'ecirc', 'euml', 'igrave', 'iacute', 'icirc', 'iuml', 'eth', 'ntilde', 'ograve', 'oacute', 'ocirc', 'otilde', 'ouml', 'divide', 'oslash', 'ugrave', 'uacute', 'ucirc', 'uuml', 'yacute', 'thorn', 'yuml', 'quot', 'amp', 'lt', 'gt', 'OElig', 'oelig', 'Scaron', 'scaron', 'Yuml', 'circ', 'tilde', 'ensp', 'emsp', 'thinsp', 'zwnj', 'zwj', 'lrm', 'rlm', 'ndash', 'mdash', 'lsquo', 'rsquo', 'sbquo', 'ldquo', 'rdquo', 'bdquo', 'dagger', 'Dagger', 'permil', 'lsaquo', 'rsaquo', 'euro', 'fnof', 'Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon', 'Zeta', 'Eta', 'Theta', 'Iota', 'Kappa', 'Lambda', 'Mu', 'Nu', 'Xi', 'Omicron', 'Pi', 'Rho', 'Sigma', 'Tau', 'Upsilon', 'Phi', 'Chi', 'Psi', 'Omega', 'alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta', 'eta', 'theta', 'iota', 'kappa', 'lambda', 'mu', 'nu', 'xi', 'omicron', 'pi', 'rho', 'sigmaf', 'sigma', 'tau', 'upsilon', 'phi', 'chi', 'psi', 'omega', 'thetasym', 'upsih', 'piv', 'bull', 'hellip', 'prime', 'Prime', 'oline', 'frasl', 'weierp', 'image', 'real', 'trade', 'alefsym', 'larr', 'uarr', 'rarr', 'darr', 'harr', 'crarr', 'lArr', 'uArr', 'rArr', 'dArr', 'hArr', 'forall', 'part', 'exist', 'empty', 'nabla', 'isin', 'notin', 'ni', 'prod', 'sum', 'minus', 'lowast', 'radic', 'prop', 'infin', 'ang', 'and', 'or', 'cap', 'cup', 'int', 'there4', 'sim', 'cong', 'asymp', 'ne', 'equiv', 'le', 'ge', 'sub', 'sup', 'nsub', 'sube', 'supe', 'oplus', 'otimes', 'perp', 'sdot', 'lceil', 'rceil', 'lfloor', 'rfloor', 'lang', 'rang', 'loz', 'spades', 'clubs', 'hearts', 'diams'];
@@ -2464,7 +1599,7 @@ module.exports = Html4Entities;
 
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports) {
 
 var ALPHA_INDEX = {
@@ -2625,61 +1760,7 @@ module.exports = XmlEntities;
 
 
 /***/ }),
-/* 33 */
-/***/ (function(module, exports) {
-
-module.exports = "<app-navbar [class.mat-elevation-z6]=\"showShadow\"></app-navbar>\r\n<router-outlet></router-outlet>";
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports) {
-
-module.exports = "<p>This is a simple example of an Angular component.</p>\r\n\r\n<p>Current count: <strong>{{ currentCount }}</strong></p>\r\n\r\n<button md-raised-button (click)=\"incrementCounter()\">Increment</button>\r\n";
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports) {
-
-module.exports = "<h1>Products</h1>\r\n\r\n<p>This component demonstrates fetching data from the server.</p>\r\n\r\n<p *ngIf=\"!products\"><em>Loading...</em></p>\r\n\r\n<table class='' *ngIf=\"products\">\r\n    <thead>\r\n        <tr>\r\n            <th></th>\r\n            <th>Name</th>\r\n            <th>Product Number</th>\r\n            <th>Color</th>\r\n            <th>Price</th>\r\n        </tr>\r\n    </thead>\r\n        <tbody>\r\n        <tr *ngFor=\"let product of products\">\r\n            <td><img src=\"{{product.thumbnail}}\" alt=\"thumbnail\"/> </td>\r\n            <td>{{ product.name }}</td>\r\n            <td>{{ product.productNumber }}</td>\r\n            <td>{{ product.color }}</td>\r\n            <td>${{ product.listPrice }}</td>\r\n            \r\n        </tr>\r\n    </tbody>\r\n</table>\r\n            ";
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = "<footer class=\"footer primary\">\r\n  <div class=\"footer-list\">\r\n    <div class=\"footer-logo\">\r\n      <img class=\"footer-angular-logo\"\r\n        src=\"" + __webpack_require__(8) + "\"\r\n        alt=\"angular\">\r\n    </div>\r\n\r\n    <div class=\"footer-links\">\r\n      <ul>\r\n        <li> <a href=\"https://angular.io\">Learn Angular</a> </li>\r\n      </ul>\r\n    </div>\r\n\r\n    <div class=\"footer-copyright\">\r\n      <p>Developed by Vance ©2017</p>\r\n    </div>\r\n  </div>\r\n</footer>";
-
-/***/ }),
-/* 37 */
-/***/ (function(module, exports) {
-
-module.exports = "<header class=\"header-background\">\r\n  <div class=\"header-section\">\r\n    <div class=\"header-headline\">\r\n      <h1 class=\"mat-h1\">.NET Core Angular 4 with </h1>\r\n      <h2> Material Design components for Angular</h2>\r\n    </div>\r\n    <div class=\"header-start\">\r\n      <a md-raised-button class=\"button\" routerLink=\"/counter\">Counter</a>\r\n    </div>\r\n  </div>\r\n</header>\r\n\r\n<div class=\"homepage-promo\">\r\n  <section class=\"mat-typography\">\r\n    <h1>Hello, world!</h1>\r\n    <p>Welcome to your new single-page application, built with:</p>\r\n    <ul>\r\n      <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a>        for cross-platform server-side code</li>\r\n      <li><a href='https://angular.io/'>Angular</a> and <a href='http://www.typescriptlang.org/'>TypeScript</a> for client-side\r\n        code\r\n      </li>\r\n      <li><a href='https://webpack.github.io/'>Webpack</a> for building and bundling client-side resources</li>\r\n      <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>\r\n    </ul>\r\n  </section>\r\n  <section class=\"mat-typography\">\r\n    <p>To help you get started, we've also set up:</p>\r\n    <ul>\r\n      <li><strong>Client-side navigation</strong>. For example, click <em>Counter</em> then <em>Back</em> to return here.</li>\r\n      <li><strong>Server-side prerendering</strong>. For faster initial loading and improved SEO, your Angular app is prerendered\r\n        on the server. The resulting HTML is then transferred to the browser where a client-side copy of the app takes over.\r\n      </li>\r\n      <li><strong>Webpack dev middleware</strong>. In development mode, there's no need to run the <code>webpack</code> build\r\n        tool. Your client-side resources are dynamically built on demand. Updates are available as soon as you modify any\r\n        file.\r\n      </li>\r\n      <li><strong>Hot module replacement</strong>. In development mode, you don't even need to reload the page after making most\r\n        changes. Within seconds of saving changes to files, your Angular app will be rebuilt and a new instance injected\r\n        is into the page.</li>\r\n      <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and the\r\n        <code>webpack</code> build tool produces minified static CSS and JavaScript files.</li>\r\n    </ul>\r\n  </section>\r\n\r\n</div>\r\n\r\n<app-footer></app-footer>";
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = "<!-- TODO: figure out if the <nav> should go inside of a <header> element. -->\r\n<nav class=\"docs-navbar\">\r\n  <a md-button class=\"button\" routerLink=\"/\" aria-label=\"Vui choi Angular\">\r\n    <img class=\"docs-angular-logo\"\r\n      src=\"" + __webpack_require__(8) + "\"\r\n      alt=\"angular\">\r\n    <span>DNX_SPA</span>\r\n  </a>\r\n  <a md-button class=\"button\" routerLink=\"home\">Home</a>\r\n  <a md-button class=\"button\" routerLink=\"counter\">Counter</a>\r\n  <a md-button class=\"button\" routerLink=\"fetch-data\">Fetch data</a>\r\n  <div class=\"flex-spacer\"></div>\r\n  <theme-picker></theme-picker>\r\n</nav>";
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"primary-header page-header\">\r\n  <button md-button class=\"sidenav-toggle\" (click)=\"toggleSidenav.emit()\">\r\n    <md-icon>menu</md-icon>\r\n  </button>\r\n\r\n  <h1>{{getTitle()}} </h1>\r\n</div>\r\n";
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports) {
-
-module.exports = "<md-sidenav-container class=\"sidenav-container\">\r\n    <md-sidenav #sidenav class=\"sidenav\" [opened]=\"!isScreenSmall()\" [mode]=\"isScreenSmall() ? 'over' : 'side'\">\r\n        <nav *ngFor=\"let category of sideNavItems.getItemsInCategories()\">\r\n            <h3>{{category.name}}</h3>\r\n            <ul>\r\n                <li *ngFor=\"let component of category.items\">\r\n                    <a [routerLink]=\"['/', component.id]\" routerLinkActive=\"sidenav-item-selected\">\r\n                        {{component.name}}\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </nav>\r\n    </md-sidenav>\r\n\r\n    <div class=\"sidenav-content\">\r\n        <page-header (toggleSidenav)=\"sidenav.toggle()\"></page-header>\r\n        <div class=\"sidenav-content-wrapper\">\r\n            <router-outlet></router-outlet>\r\n        </div>\r\n        <app-footer></app-footer>\r\n    </div>\r\n</md-sidenav-container>";
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports) {
-
-module.exports = "<button md-icon-button [md-menu-trigger-for]=\"themeMenu\" mdTooltip=\"Select a theme!\">\r\n  <md-icon>format_color_fill</md-icon>\r\n</button>\r\n\r\n<!-- TODO: replace use of `md-menu` here with a custom overlay -->\r\n<md-menu class=\"docs-theme-picker-menu\" #themeMenu=\"mdMenu\" x-position=\"before\">\r\n  <md-grid-list cols=\"2\">\r\n    <md-grid-tile *ngFor=\"let theme of themes\">\r\n      <div md-menu-item (click)=\"installTheme(theme)\">\r\n        <div class=\"docs-theme-picker-swatch\">\r\n          <md-icon class=\"docs-theme-chosen-icon\" *ngIf=\"currentTheme === theme\">check_circle</md-icon>\r\n          <div class=\"docs-theme-picker-primary\" [style.background]=\"theme.primary\"></div>\r\n        </div>\r\n      </div>\r\n    </md-grid-tile>\r\n  </md-grid-list>\r\n</md-menu>\r\n";
-
-/***/ }),
-/* 42 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2770,7 +1851,7 @@ var isArray = Array.isArray || function (xs) {
 
 
 /***/ }),
-/* 43 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2862,66 +1943,18 @@ var objectKeys = Object.keys || function (obj) {
 
 
 /***/ }),
-/* 44 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-exports.decode = exports.parse = __webpack_require__(42);
-exports.encode = exports.stringify = __webpack_require__(43);
+exports.decode = exports.parse = __webpack_require__(32);
+exports.encode = exports.stringify = __webpack_require__(33);
 
 
 /***/ }),
-/* 45 */
-/***/ (function(module, exports) {
-
-module.exports = "app {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  display: flex;\n  flex-direction: column; }\n\napp > app-sidenav {\n  flex: 1 1 auto; }\n\napp-navbar {\n  position: relative;\n  z-index: 10; }\n"
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports) {
-
-module.exports = ".counter {\n  display: flex;\n  align-items: center; }\n"
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports) {
-
-module.exports = ".footer {\n  margin-top: 40px;\n  font-size: 12px; }\n\n.footer-list {\n  align-items: center;\n  display: flex;\n  flex-flow: row wrap;\n  padding: 8px; }\n\n.footer-angular-logo {\n  height: 50px; }\n\n.footer-copyright {\n  display: flex;\n  flex: 1;\n  justify-content: flex-end; }\n\n.footer-links ul {\n  list-style: none;\n  margin: 0 40px;\n  padding: 0; }\n  .footer-links ul a {\n    font-size: 16px;\n    padding: 0;\n    text-decoration: none; }\n    .footer-links ul a:hover {\n      text-decoration: underline; }\n\n@media screen and (max-width: 884px) {\n  .footer-list {\n    flex-direction: column; } }\n"
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports) {
-
-module.exports = ".header-background {\n  height: 300px;\n  margin-bottom: 40px; }\n\n.header-section {\n  text-align: center;\n  padding-top: 60px; }\n\n.header-headline h1 {\n  font-size: 56px;\n  font-weight: 300;\n  line-height: 56px;\n  margin: 15px 0 15px 0; }\n\n.header-headline h2 {\n  font-size: 18px;\n  font-weight: 300;\n  line-height: 28px;\n  margin: 15px 0 25px 0; }\n\n.homepage-promo {\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  padding: 16px; }\n  .homepage-promo h2 {\n    font-size: 25px;\n    font-weight: 400;\n    margin: 0 0 16px 0;\n    padding: 0; }\n  .homepage-promo p {\n    font-size: 16px;\n    font-weight: 400;\n    line-height: 28px;\n    margin: 0 0 24px 0;\n    padding: 0; }\n\n.homepage-row {\n  display: flex;\n  max-width: 920px;\n  margin: 60px 0; }\n\n.homepage-row .svg-image {\n  max-width: 90%; }\n\n.homepage-reverse-row {\n  flex-direction: row-reverse; }\n  .homepage-reverse-row .homepage-promo-desc {\n    padding-left: 0; }\n\n.header-start,\n.homepage-bottom-start {\n  text-align: center;\n  margin: 60px 0; }\n\n.homepage-promo-img,\n.homepage-promo-desc {\n  width: 50%; }\n\n.homepage-promo-img {\n  text-align: center; }\n\n.homepage-promo-desc {\n  line-height: 2;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  padding-left: 20px; }\n\n.card-img {\n  max-width: 100%;\n  height: auto;\n  display: block; }\n"
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports) {
-
-module.exports = ".docs-navbar {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  padding: 8px 16px; }\n  .docs-navbar > .mat-button:last-child {\n    margin-left: auto; }\n\n.flex-spacer {\n  flex-grow: 1; }\n\n.docs-angular-logo {\n  height: 26px;\n  margin: 0 4px 3px 0;\n  vertical-align: middle; }\n\n.docs-github-logo {\n  height: 21px;\n  margin: 0 7px 2px 0;\n  vertical-align: middle; }\n"
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports) {
-
-module.exports = "/**\n * Applies styles for users in high contrast mode. Note that this only applies\n * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`\n * attribute, however Chrome handles high contrast differently.\n */\n/* Theme for the ripple elements.*/\n/** The mixins below are shared between md-menu and md-select */\n/**\n * This mixin adds the correct panel transform styles based\n * on the direction that the menu panel opens.\n */\n/* stylelint-disable material/no-prefixes */\n/* stylelint-enable */\n/**\n * This mixin contains shared option styles between the select and\n * autocomplete components.\n */\n/* For desktop, the content should be aligned with the page title. */\n.page-header {\n  display: flex;\n  align-items: center; }\n  @media (max-width: 840px) {\n    .page-header {\n      padding-left: 0; } }\n\n@media (max-width: 840px) {\n  h1 {\n    padding: 24px 8px;\n    font-size: 20px; } }\n\n.sidenav-toggle {\n  padding: 0;\n  margin: 8px;\n  min-width: 64px;\n  display: none; }\n  @media (max-width: 840px) {\n    .sidenav-toggle {\n      display: flex;\n      align-items: center;\n      justify-content: center; } }\n  .sidenav-toggle md-icon {\n    font-size: 30px;\n    height: 64px;\n    width: 64px;\n    line-height: 64px;\n    color: white; }\n"
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports) {
-
-module.exports = "app-sidenav {\n  display: flex; }\n\n.sidenav-container {\n  width: 100%; }\n  .sidenav-container .mat-sidenav-content {\n    position: absolute;\n    right: 0;\n    left: 0; }\n\n.sidenav {\n  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24);\n  padding-bottom: 72px;\n  width: 240px;\n  bottom: 0;\n  overflow: auto;\n  height: 100%; }\n  .sidenav.mat-sidenav-opened {\n    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24); }\n  .sidenav h3 {\n    border: none;\n    font-size: 10px;\n    letter-spacing: 1px;\n    line-height: 24px;\n    text-transform: uppercase;\n    font-weight: 400;\n    margin: 0;\n    padding: 0 16px; }\n  .sidenav ul {\n    list-style-type: none;\n    margin: 0;\n    padding: 0; }\n  .sidenav li {\n    border-bottom-width: 1px;\n    border-bottom-style: solid;\n    margin: 0;\n    padding: 0; }\n    .sidenav li:last-child {\n      border-color: transparent; }\n    .sidenav li > a {\n      box-sizing: border-box;\n      display: block;\n      font-size: 14px;\n      font-weight: 400;\n      line-height: 47px;\n      text-decoration: none;\n      transition: all .3s;\n      padding: 0 16px;\n      position: relative; }\n      .sidenav li > a.sidenav-item-selected {\n        font-weight: 600; }\n\n.sidenav-content {\n  min-height: 100%;\n  display: flex;\n  flex-direction: column; }\n  .sidenav-content .sidenav-content-wrapper {\n    padding: 20px 70px 50px;\n    flex-grow: 1; }\n  .sidenav-content router-outlet + * {\n    flex-grow: 1; }\n"
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports) {
-
-module.exports = ".docs-theme-picker-menu .md-menu-content {\n  padding: 8px; }\n\n.docs-theme-picker-menu [md-menu-item] {\n  flex: 0 0 auto;\n  padding: 0;\n  overflow: hidden; }\n\n.docs-theme-picker-menu .docs-theme-picker-swatch {\n  position: relative;\n  width: 36px;\n  height: 36px;\n  margin: 6px;\n  border-radius: 50%;\n  overflow: hidden; }\n  .docs-theme-picker-menu .docs-theme-picker-swatch .docs-theme-chosen-icon {\n    color: white;\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    transform: translate(-50%, -50%); }\n  .docs-theme-picker-menu .docs-theme-picker-swatch::after {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    box-sizing: border-box;\n    border: 1px solid rgba(0, 0, 0, 0.2);\n    border-radius: 50%; }\n\n.docs-theme-picker-menu .docs-theme-picker-primary {\n  width: 100%;\n  height: 100%; }\n\n.docs-theme-picker-menu .docs-theme-picker-accent {\n  position: absolute;\n  bottom: 6px;\n  width: 100%;\n  height: 6px; }\n"
-
-/***/ }),
-/* 53 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process, global) {/*! *****************************************************************************
@@ -4049,26 +3082,16 @@ var Reflect;
             Function("return this;")());
 })(Reflect || (Reflect = {}));
 //# sourceMappingURL=Reflect.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(61), __webpack_require__(60)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43), __webpack_require__(42)))
 
 /***/ }),
-/* 54 */
+/* 36 */,
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var Observable_1 = __webpack_require__(59);
-var first_1 = __webpack_require__(64);
-Observable_1.Observable.prototype.first = first_1.first;
-//# sourceMappingURL=first.js.map
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var ansiRegex = __webpack_require__(19)();
+var ansiRegex = __webpack_require__(28)();
 
 module.exports = function (str) {
 	return typeof str === 'string' ? str.replace(ansiRegex, '') : str;
@@ -4076,7 +3099,7 @@ module.exports = function (str) {
 
 
 /***/ }),
-/* 56 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*eslint-env browser*/
@@ -4105,7 +3128,7 @@ for (var key in styles) {
   clientOverlay.style[key] = styles[key];
 }
 
-var ansiHTML = __webpack_require__(18);
+var ansiHTML = __webpack_require__(27);
 var colors = {
   reset: ['transparent', 'transparent'],
   black: '181818',
@@ -4120,7 +3143,7 @@ var colors = {
 };
 ansiHTML.setColors(colors);
 
-var Entities = __webpack_require__(30).AllHtmlEntities;
+var Entities = __webpack_require__(29).AllHtmlEntities;
 var entities = new Entities();
 
 exports.showProblems =
@@ -4161,7 +3184,7 @@ function problemType (type) {
 
 
 /***/ }),
-/* 57 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -4299,7 +3322,7 @@ module.exports = function(hash, moduleMap, options) {
 
 
 /***/ }),
-/* 58 */
+/* 40 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -4327,60 +3350,40 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(1))(0);
-
-/***/ }),
-/* 60 */
+/* 41 */,
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(1))(11);
 
 /***/ }),
-/* 61 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(1))(16);
 
 /***/ }),
-/* 62 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(1))(29);
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(1))(3);
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(1))(40);
-
-/***/ }),
-/* 65 */
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(1))(51);
 
 /***/ }),
-/* 66 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(1))(63);
 
 /***/ }),
-/* 67 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(14);
 __webpack_require__(13);
-module.exports = __webpack_require__(12);
+__webpack_require__(12);
+module.exports = __webpack_require__(11);
 
 
 /***/ })
