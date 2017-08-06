@@ -18,7 +18,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     ],
     providers: [
         {
-            provide: 'ORIGIN_URL', useValue: "http://localhost:62030/",
+            provide: 'ORIGIN_URL', useValue: "http://localhost:5001/",
         },
         {
             provide: 'FLICKR_KEY', useValue: 'bc195b432b6b3e561d1bc5a6db8618b1'
