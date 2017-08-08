@@ -2,6 +2,9 @@ import { ComponentPageTitle } from './../../../shared/page-title/page-title';
 import { Component, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 
+import { IAppConfig } from './../../../shared/app-config/app-config.interface';
+import { AppConfig } from './../../../shared/app-config/app-config.constants';
+
 @Component({
     selector: 'fetchdata',
     templateUrl: './fetchdata.component.html'
@@ -9,11 +12,14 @@ import { Http } from '@angular/http';
 export class FetchDataComponent {
     public products: Product[];
 
-    constructor(http: Http, @Inject('ORIGIN_URL') originUrl: string, private _componentPageTitle: ComponentPageTitle) {
+    constructor(
+        http: Http,
+        private _componentPageTitle: ComponentPageTitle,
+        @Inject(AppConfig) private appConfig: IAppConfig) {
+
         _componentPageTitle.title = "Fetch data";
 
-        http.get(originUrl + 'api/products').subscribe(result => {
-            console.log(result);
+        http.get(this.appConfig.API_ENDPOINT + '/api/products').subscribe(result => {
             this.products = result.json() as Product[];
         });
     }

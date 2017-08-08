@@ -35,12 +35,13 @@ namespace DNX.ProductDetail.API
             services.AddMvc();
             services.AddCors(o => o.AddPolicy("DnxPolicy", builder =>
             {
-                builder.WithOrigins("http://localhost:5000");
+                //builder.WithOrigins("http://localhost:5002");
+                builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
             }));
-            //services.Configure<MvcOptions>(options =>
-            //{
-            //    options.Filters.Add(new CorsAuthorizationFilterFactory("DnxPolicy"));
-            //});
+            services.Configure<MvcOptions>(options =>
+            {
+                options.Filters.Add(new CorsAuthorizationFilterFactory("DnxPolicy"));
+            });
             var connectionString = Configuration.GetConnectionString("DNXDatabaseLocal");
             services.AddDbContext<DnxContext>(opts => opts.UseSqlServer(connectionString));
         }

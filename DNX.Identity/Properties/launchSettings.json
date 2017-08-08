@@ -14,7 +14,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "http://localhost:5000/.well-known/openid-configuration"
-    },,
+    },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,

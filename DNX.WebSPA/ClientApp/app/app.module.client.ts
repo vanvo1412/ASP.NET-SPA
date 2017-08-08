@@ -1,9 +1,12 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { sharedConfig } from './app.module.shared';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
+import { AppConfig, AppConfigConstant } from './../shared/app-config/app-config.constants';
 
 @NgModule({
     bootstrap: sharedConfig.bootstrap,
@@ -18,13 +21,16 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     ],
     providers: [
         {
-            provide: 'ORIGIN_URL', useValue: "http://localhost:5001/",
+            provide: 'ORIGIN_URL', useValue: "http://localhost:5002/",
         },
         {
             provide: 'FLICKR_KEY', useValue: 'bc195b432b6b3e561d1bc5a6db8618b1'
         },
         {
             provide: 'FLICKR_SECRET', useValue: 'c3fd6eadc64e486b'
+        },
+        {
+            provide: AppConfig, useValue: AppConfigConstant
         }
     ]
 })
