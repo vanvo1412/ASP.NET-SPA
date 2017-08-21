@@ -7,14 +7,13 @@ import { Observable } from "rxjs";
 const settings: any = {
     //Required properties
     authority: 'http://localhost:5000',
-    client_id: 'angular',
+    client_id: 'spa',
     redirect_uri: 'http://localhost:5002/signin-callback.html',
     response_type: 'id_token token',
-    scope: 'openid profile ProductDetail',
+    scope: 'openid profile productdetail',
 
-    post_logout_redirect_uri: 'http://localhost:5002',
     silent_redirect_uri: 'http://localhost:5002/silent-renew-callback.html',
-    
+    post_logout_redirect_uri: 'http://localhost:5002',
 
     automaticSilentRenew: true,
     accessTokenExpiringNotificationTime: 10,
@@ -38,7 +37,7 @@ export class AuthService {
         this.userManager.getUser()
             .then((user) => {
                 if (user) {
-                     console.log(user);
+                    console.log(user);
                     this.loggedIn = true;
                     // this.appState.setUser(user);
                     this.currentUser = user;
@@ -96,6 +95,11 @@ export class AuthService {
         }).catch(function (err) {
             console.log(err);
         });
+        // this.userManager.signinSilent({ data: 'some data' }).then(function () {
+        //     console.log('signinRedirect done');
+        // }).catch(function (err) {
+        //     console.log(err);
+        // });
     }
 
     signIn() {

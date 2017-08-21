@@ -52,6 +52,7 @@
     "@types/chai": "3.5.2",
     "@types/jasmine": "2.5.47",
     "chai": "3.5.0",
+    "copy-webpack-plugin": "^4.0.1",
     "jasmine-core": "2.6.1",
     "karma": "1.7.0",
     "karma-chai": "0.1.0",

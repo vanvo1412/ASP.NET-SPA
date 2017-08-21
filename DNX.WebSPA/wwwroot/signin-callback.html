@@ -1,31 +1,17 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <title></title>
 </head>
-
 <body>
-    <h2 id="waiting" style="text-align: center">Signing you in...</h2>
-    <div id="error"></div>
-    <script src="dist/oidc.js"></script>
+    <script src="dist/oidc-client.min.js"></script>
     <script>
-        new Oidc.UserManager({ loadUserInfo: true, filterProtocolClaims: true }).signinRedirectCallback().then(function (user) {
-            if (user == null) {
-                document.getElementById("waiting").style.display = "none";
-                document.getElementById("error").innerText = "No sign-in request pending.";
-            }
-            else {
-                window.location = "/";
-            }
-        })
-            .catch(function (er) {
-                document.getElementById("waiting").style.display = "none";
-                document.getElementById("error").innerText = er.message;
-            });
-
+        new Oidc.UserManager().signinRedirectCallback().then(function () {
+            window.location = "/";
+        }).catch(function (e) {
+            console.error(e);
+        });
     </script>
 </body>
-
 </html>

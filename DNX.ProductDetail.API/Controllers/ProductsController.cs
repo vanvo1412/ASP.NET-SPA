@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DNX.ProductDetail.API.Models;
-using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DNX.ProductDetail.API.Controllers
 {
     [Produces("application/json")]
     [Route("api/Products")]
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly DnxContext _context;

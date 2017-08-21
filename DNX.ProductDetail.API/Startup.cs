@@ -11,6 +11,7 @@ using DNX.ProductDetail.API.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Cors.Internal;
+using IdentityModel;
 
 namespace DNX.ProductDetail.API
 {
@@ -52,16 +53,16 @@ namespace DNX.ProductDetail.API
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            app.UseCors("DnxPolicy");
+
             app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
             {
                 Authority = "http://localhost:5000",
                 RequireHttpsMetadata = false,
 
-                ApiName = "api1"
+                ApiName = "productdetail"
             });
-
             app.UseMvc();
-            app.UseCors("DnxPolicy");
 
             //if (env.IsDevelopment())
             //{
@@ -73,5 +74,6 @@ namespace DNX.ProductDetail.API
             //}
 
         }
+
     }
 }

@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const merge = require('webpack-merge');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (env) => {
     const isDevBuild = !(env && env.prod);
@@ -38,6 +39,7 @@ module.exports = (env) => {
                 'zone.js',
                 '@angular/material',
                 '@angular/cdk',
+                'oidc'
             ],
             site: ['./Styles/main.scss'],
             deeppurpleAmber: [
@@ -62,9 +64,14 @@ module.exports = (env) => {
         plugins: [
             new webpack.ContextReplacementPlugin(/\@angular\b.*\b(bundles|linker)/, path.join(__dirname, './ClientApp')), // Workaround for https://github.com/angular/angular/issues/11580
             new webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)@angular/, path.join(__dirname, './ClientApp')), // Workaround for https://github.com/angular/angular/issues/14898
-            new webpack.IgnorePlugin(/^vertx$/) // Workaround for https://github.com/stefanpenner/es6-promise/issues/100
+            new webpack.IgnorePlugin(/^vertx$/), // Workaround for https://github.com/stefanpenner/es6-promise/issues/100
+            new CopyWebpackPlugin([
+                {from: './node_modules/oidc-client/dist/oidc-client.min.js', to: 'oidc-client.min.js'},
+                {from: './signin-callback.html', to: '../signin-callback.html'},
+                {from: './silent-renew-callback.html', to: '../silent-renew-callback.html'}
+            ])
         ]
-    };
+    };  
 
     //SASS
     const clientBundleConfig = merge(sharedConfig, {
