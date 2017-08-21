@@ -1,6 +1,12 @@
 <h1>Products</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
+<div>
+    <md-input-container>
+        <input mdInput placeholder="Product name">
+    </md-input-container>
+    <button md-raised-button>Add</button>
+</div>
 
 <p *ngIf="!products"><em>Loading...</em></p>
 
@@ -14,15 +20,13 @@
             <th>Price</th>
         </tr>
     </thead>
-        <tbody>
+    <tbody>
         <tr *ngFor="let product of products">
-            <td><img src="{{product.thumbnail}}" alt="thumbnail"/> </td>
+            <td><img src="{{product.thumbnail}}" alt="thumbnail" /> </td>
             <td>{{ product.name }}</td>
             <td>{{ product.productNumber }}</td>
             <td>{{ product.color }}</td>
             <td>${{ product.listPrice }}</td>
-            
         </tr>
     </tbody>
 </table>
-            

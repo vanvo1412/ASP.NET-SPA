@@ -23,6 +23,10 @@ export class FetchDataComponent {
             this.products = result.json() as Product[];
         });
     }
+
+    createProduct(product: Product) {
+        
+    }
 }
 
 interface Product {

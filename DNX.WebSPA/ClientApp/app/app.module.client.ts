@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -7,6 +6,8 @@ import { sharedConfig } from './app.module.shared';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppConfig, AppConfigConstant } from './../shared/app-config/app-config.constants';
+import { AuthService } from './../shared/auth-service/auth.service';
+import { AuthGuard } from './../shared/auth-service/auth.guard';
 
 @NgModule({
     bootstrap: sharedConfig.bootstrap,
@@ -31,7 +32,9 @@ import { AppConfig, AppConfigConstant } from './../shared/app-config/app-config.
         },
         {
             provide: AppConfig, useValue: AppConfigConstant
-        }
+        },
+        AuthService,
+        AuthGuard
     ]
 })
 export class AppModule {
