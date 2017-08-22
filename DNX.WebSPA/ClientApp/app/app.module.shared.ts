@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './../shared/auth-service/auth.guard';
 import { SideNavComponent, SideNavModule } from './components/sidenav/sidenav';
 import { ThemePickerModule } from './components/theme-picker';
@@ -60,6 +61,7 @@ export const sharedConfig: NgModule = {
         NavBarModule,
         FooterModule,
         ThemePickerModule,
-        SideNavModule
+        SideNavModule,
+        ReactiveFormsModule
     ]
 };
