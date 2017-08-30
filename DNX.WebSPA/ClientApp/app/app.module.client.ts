@@ -1,3 +1,4 @@
+import { HttpClient } from './../shared/app-config/http-client/http-client';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -34,7 +35,8 @@ import { AuthGuard } from './../shared/auth-service/auth.guard';
             provide: AppConfig, useValue: AppConfigConstant
         },
         AuthService,
-        AuthGuard
+        AuthGuard,
+        HttpClient
     ]
 })
 export class AppModule {

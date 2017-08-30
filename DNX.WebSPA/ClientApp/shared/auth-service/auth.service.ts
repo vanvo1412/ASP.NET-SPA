@@ -37,7 +37,6 @@ export class AuthService {
         this.userManager.getUser()
             .then((user) => {
                 if (user) {
-                    console.log(user);
                     this.loggedIn = true;
                     // this.appState.setUser(user);
                     this.currentUser = user;
@@ -95,11 +94,6 @@ export class AuthService {
         }).catch(function (err) {
             console.log(err);
         });
-        // this.userManager.signinSilent({ data: 'some data' }).then(function () {
-        //     console.log('signinRedirect done');
-        // }).catch(function (err) {
-        //     console.log(err);
-        // });
     }
 
     signIn() {

@@ -1,6 +1,6 @@
+import { HttpClient } from './../../../shared/app-config/http-client/http-client';
 import { ComponentPageTitle } from './../../../shared/page-title/page-title';
 import { Component, Inject } from '@angular/core';
-import { Http } from '@angular/http';
 
 import { IAppConfig } from './../../../shared/app-config/app-config.interface';
 import { AppConfig } from './../../../shared/app-config/app-config.constants';
@@ -13,7 +13,7 @@ export class FetchDataComponent {
     public products: Product[];
 
     constructor(
-        http: Http,
+        http: HttpClient,
         private _componentPageTitle: ComponentPageTitle,
         @Inject(AppConfig) private appConfig: IAppConfig) {
 
