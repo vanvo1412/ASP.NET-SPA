@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DNX.Identity", "DNX.Identit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DNX.IS4.Client", "DNX.IS4.Client\DNX.IS4.Client.csproj", "{B960D9B1-D49A-4B5C-B3F4-D33E44AFAC80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication3", "..\WebApplication3\WebApplication3.csproj", "{2C8A4781-1D36-464F-8B1F-FD8E4C9831EA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,10 +39,6 @@ Global
 		{B960D9B1-D49A-4B5C-B3F4-D33E44AFAC80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B960D9B1-D49A-4B5C-B3F4-D33E44AFAC80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B960D9B1-D49A-4B5C-B3F4-D33E44AFAC80}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C8A4781-1D36-464F-8B1F-FD8E4C9831EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C8A4781-1D36-464F-8B1F-FD8E4C9831EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C8A4781-1D36-464F-8B1F-FD8E4C9831EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C8A4781-1D36-464F-8B1F-FD8E4C9831EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
