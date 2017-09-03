@@ -63,8 +63,8 @@ namespace DNX.Identity
                         options.MigrationsAssembly(migrationsAssembly)))
                 .AddOperationalStore(builder =>
                     builder.UseSqlServer(connectionString, options =>
-                        options.MigrationsAssembly(migrationsAssembly)));
-            //.AddProfileService<IdentityProfileService>()
+                        options.MigrationsAssembly(migrationsAssembly)))
+                .AddProfileService<ProfileService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

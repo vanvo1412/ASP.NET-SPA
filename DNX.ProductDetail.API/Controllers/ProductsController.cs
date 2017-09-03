@@ -26,6 +26,7 @@ namespace DNX.ProductDetail.API.Controllers
         [HttpGet]
         public IEnumerable<Product> GetProduct()
         {
+            var user = User;
             return _context.Product;
         }
 

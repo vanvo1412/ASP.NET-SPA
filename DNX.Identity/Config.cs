@@ -22,7 +22,7 @@ namespace DNX.Identity
                 new Client
                 {
                     ClientId = "console",
-
+                    ClientName = "Console ClientCredentials flow",
                     // no interactive user, use the clientid/secret for authentication
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
 
@@ -38,6 +38,7 @@ namespace DNX.Identity
                 new Client
                 {
                     ClientId = "spa",
+                    ClientName = "Angular Implicit flow",
                     // no interactive user, use the clientid/secret for authentication
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
@@ -66,6 +67,7 @@ namespace DNX.Identity
                 new Client
                 {
                     ClientId = "spa-ro",
+                    ClientName = "Angular ResourceOwner flow",
                     // no interactive user, use the clientid/secret for authentication
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
                     AllowAccessTokensViaBrowser = true,
@@ -93,6 +95,7 @@ namespace DNX.Identity
                 new Client
                 {
                     ClientId = "ro.client",
+                    ClientName = "Console ResourceOwner flow",
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
 
                     ClientSecrets =
@@ -118,6 +121,27 @@ namespace DNX.Identity
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile
+                    }
+                },
+                new Client
+                {
+                    ClientId = "productdetail-swagger",
+                    ClientName = "Swagger",
+                    ClientSecrets =
+                    {
+                        new Secret("productdetail-secret".Sha256())
+                    },
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser = true,
+                    RequireConsent = false,
+                    // where to redirect to after login
+                    RedirectUris = { "http://localhost:5001/swagger/o2c.html" },
+
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "productdetail"
                     }
                 }
             };

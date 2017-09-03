@@ -70,7 +70,6 @@ namespace DNX.Identity.Services
                 new Claim(JwtClaimTypes.Subject, user.Id),
                 new Claim(JwtClaimTypes.PreferredUserName, user.UserName)
             };
-
             //if (!string.IsNullOrWhiteSpace(user.Name))
             //    claims.Add(new Claim("name", user.Name));
 
