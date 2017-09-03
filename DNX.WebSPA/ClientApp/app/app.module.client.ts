@@ -1,9 +1,8 @@
+import { AppComponent } from './components/app/app.component';
 import { HttpClient } from './../shared/app-config/http-client/http-client';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { sharedConfig } from './app.module.shared';
+import { AppModuleShared } from './app.module.shared';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppConfig, AppConfigConstant } from './../shared/app-config/app-config.constants';
@@ -11,15 +10,11 @@ import { AuthService } from './../shared/auth-service/auth.service';
 import { AuthGuard } from './../shared/auth-service/auth.guard';
 
 @NgModule({
-    bootstrap: sharedConfig.bootstrap,
-    declarations: sharedConfig.declarations,
+    bootstrap: [AppComponent],
     imports: [
         BrowserModule,
-        FormsModule,
-        HttpModule,
         BrowserAnimationsModule,
-        ...sharedConfig.imports
-
+        AppModuleShared
     ],
     providers: [
         {
@@ -31,6 +26,7 @@ import { AuthGuard } from './../shared/auth-service/auth.guard';
         {
             provide: 'FLICKR_SECRET', useValue: 'c3fd6eadc64e486b'
         },
+        {   provide: 'BASE_URL', useFactory: getBaseUrl },
         {
             provide: AppConfig, useValue: AppConfigConstant
         },
@@ -40,4 +36,8 @@ import { AuthGuard } from './../shared/auth-service/auth.guard';
     ]
 })
 export class AppModule {
+}
+
+export function getBaseUrl() {
+    return document.getElementsByTagName('base')[0].href;
 }

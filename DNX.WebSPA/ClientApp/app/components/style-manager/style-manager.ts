@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-
+import { Injectable, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/platform-browser';
 
 /**
  * Class for managing stylesheets. Stylesheets are loaded into named slots so that they can be
@@ -7,6 +7,8 @@ import {Injectable} from '@angular/core';
  */
 @Injectable()
 export class StyleManager {
+  // constructor(@Inject(DOCUMENT) private document: any){
+
   /**
    * Set the stylesheet with the specified key.
    */

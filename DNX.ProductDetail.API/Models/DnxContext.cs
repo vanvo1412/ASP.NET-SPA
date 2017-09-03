@@ -1,11 +1,15 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-
 namespace DNX.ProductDetail.API.Models
 {
     public partial class DnxContext : DbContext
     {
+        public DnxContext(DbContextOptions<DnxContext> options)
+            : base(options)
+        {
+        }
+
         public virtual DbSet<Address> Address { get; set; }
         public virtual DbSet<BuildVersion> BuildVersion { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
@@ -23,6 +27,7 @@ namespace DNX.ProductDetail.API.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+
             optionsBuilder.UseSqlServer(@"Data Source=.;Initial Catalog=dnx;User ID=sa;Password=123456;Connection Timeout=30;");
         }
 

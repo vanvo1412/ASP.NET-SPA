@@ -1,4 +1,4 @@
-import {Injectable, EventEmitter} from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 export interface DocsSiteTheme {
   href: string;
@@ -8,7 +8,13 @@ export interface DocsSiteTheme {
   isDefault?: boolean;
 }
 
-
+const DEFAULT_THEME: DocsSiteTheme = {
+  primary: '#9C27B0',
+  accent: '#4CAF50',
+  href: 'purple-green.css',
+  isDark: true,
+  isDefault: true
+}
 @Injectable()
 export class ThemeStorage {
   static storageKey = 'docs-theme-storage-current';
@@ -27,7 +33,7 @@ export class ThemeStorage {
     try {
       return JSON.parse(window.localStorage[ThemeStorage.storageKey] || null);
     } catch (e) {
-      return null;
+      return DEFAULT_THEME;
     }
   }
 

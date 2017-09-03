@@ -31,7 +31,7 @@ function isNavigationWithinComponentView(oldUrl: string, newUrl: string) {
     return oldUrl && newUrl
         && componentViewExpression.test(oldUrl)
         && componentViewExpression.test(newUrl)
-        && oldUrl.match(componentViewExpression)[1] === newUrl.match(componentViewExpression)[1];
+        && oldUrl.match(componentViewExpression)![1] === newUrl.match(componentViewExpression)![1];
 }
 
 function resetScrollPosition() {

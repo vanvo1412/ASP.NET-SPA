@@ -1,12 +1,11 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, NgModule, PLATFORM_ID } from '@angular/core';
 import { StyleManager } from '../style-manager/style-manager';
 import { ThemeStorage, DocsSiteTheme } from './theme-storage/theme-storage';
 import {
   MdButtonModule, MdGridListModule, MdIconModule, MdMenuModule,
   MdTooltipModule
 } from '@angular/material';
-import { CommonModule } from '@angular/common';
-
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'theme-picker',
@@ -17,7 +16,7 @@ import { CommonModule } from '@angular/common';
   host: { 'aria-hidden': 'true' },
 })
 export class ThemePicker {
-  currentTheme;
+  currentTheme: DocsSiteTheme;
 
   // themes = [
   //   {
@@ -80,26 +79,26 @@ export class ThemePicker {
     private _themeStorage: ThemeStorage
   ) {
     const currentTheme = this._themeStorage.getStoredTheme();
+    // if (currentTheme && isPlatformBrowser(PLATFORM_ID)) {
     if (currentTheme) {
       this.installTheme(currentTheme);
     }
   }
 
   installTheme(theme: DocsSiteTheme) {
-    this.currentTheme = this._getCurrentThemeFromHref(theme.href);
+     this.currentTheme = this._getCurrentThemeFromHref(theme.href);
     if (theme.isDefault) {
       this.styleManager.removeStyle('theme');
     } else {
       this.styleManager.setStyle('theme', `dist/${theme.href}`);
     }
-
     if (this.currentTheme) {
       this._themeStorage.storeTheme(this.currentTheme);
     }
   }
 
   private _getCurrentThemeFromHref(href: string): DocsSiteTheme {
-    return this.themes.find(theme => theme.href === href);
+    return <DocsSiteTheme>this.themes.find(theme => theme.href === href) ;
   }
 }
 

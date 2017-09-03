@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DNX.ProductDetail.API", "DNX.ProductDetail.API\DNX.ProductDetail.API.csproj", "{AC9E3C97-D12C-448A-99DB-9FAFF1E99C85}"
 EndProject
@@ -9,9 +9,11 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DNX.WebSPA", "DNX.WebSPA\DNX.WebSPA.csproj", "{59BCF888-354B-4752-BF7D-EB72ED5D9D84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNX.Identity", "DNX.Identity\DNX.Identity.csproj", "{A7097730-E843-4514-BBF1-468CABD96FCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DNX.Identity", "DNX.Identity\DNX.Identity.csproj", "{A7097730-E843-4514-BBF1-468CABD96FCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNX.IS4.Client", "DNX.IS4.Client\DNX.IS4.Client.csproj", "{B960D9B1-D49A-4B5C-B3F4-D33E44AFAC80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DNX.IS4.Client", "DNX.IS4.Client\DNX.IS4.Client.csproj", "{B960D9B1-D49A-4B5C-B3F4-D33E44AFAC80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication3", "..\WebApplication3\WebApplication3.csproj", "{2C8A4781-1D36-464F-8B1F-FD8E4C9831EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,8 +41,15 @@ Global
 		{B960D9B1-D49A-4B5C-B3F4-D33E44AFAC80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B960D9B1-D49A-4B5C-B3F4-D33E44AFAC80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B960D9B1-D49A-4B5C-B3F4-D33E44AFAC80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C8A4781-1D36-464F-8B1F-FD8E4C9831EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C8A4781-1D36-464F-8B1F-FD8E4C9831EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C8A4781-1D36-464F-8B1F-FD8E4C9831EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C8A4781-1D36-464F-8B1F-FD8E4C9831EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02A75044-3AD1-41DA-95C1-9499FCCDFBEC}
 	EndGlobalSection
 EndGlobal

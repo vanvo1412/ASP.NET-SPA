@@ -38,8 +38,7 @@ module.exports = (env) => {
                 'jquery',
                 'zone.js',
                 '@angular/material',
-                '@angular/cdk',
-                'oidc'
+                '@angular/cdk'
             ],
             site: ['./Styles/main.scss'],
             deeppurpleAmber: [

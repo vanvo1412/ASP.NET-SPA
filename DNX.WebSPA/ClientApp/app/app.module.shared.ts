@@ -1,11 +1,16 @@
-import { ReactiveFormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 import { AuthGuard } from './../shared/auth-service/auth.guard';
 import { SideNavComponent, SideNavModule } from './components/sidenav/sidenav';
 import { ThemePickerModule } from './components/theme-picker';
 import { FooterModule } from './components/footer/footer.module';
 import { NavBarModule } from './components/navbar/navbar.module';
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+
+
 
 import { AppComponent } from './components/app/app.component'
 import { HomeComponent } from './components/home/home.component';
@@ -41,8 +46,7 @@ const routeConfig = [
     { path: '**', redirectTo: 'home' }
 ];
 
-export const sharedConfig: NgModule = {
-    bootstrap: [AppComponent],
+@NgModule({
     declarations: [
         AppComponent,
         CounterComponent,
@@ -51,7 +55,9 @@ export const sharedConfig: NgModule = {
         LoginComponent
     ],
     imports: [
-        RouterModule.forRoot(routeConfig),
+        CommonModule,
+        HttpModule,
+        FormsModule,
         NoopAnimationsModule,
         MdButtonModule,
         MdIconModule,
@@ -61,6 +67,10 @@ export const sharedConfig: NgModule = {
         FooterModule,
         ThemePickerModule,
         SideNavModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterModule.forRoot(routeConfig),
     ]
-};
+})
+
+export class AppModuleShared {
+}
