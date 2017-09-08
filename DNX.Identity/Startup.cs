@@ -37,7 +37,7 @@ namespace DNX.Identity
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("DNXDatabaseLocal");
+            var connectionString = Configuration.GetConnectionString("DNXDatabaseOnAzure");
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             services.AddDbContext<DnxContext>(options =>

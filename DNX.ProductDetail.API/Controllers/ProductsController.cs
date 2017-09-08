@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DNX.ProductDetail.API.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DNX.ProductDetail.API.Models;
+using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 
 namespace DNX.ProductDetail.API.Controllers
@@ -16,7 +18,12 @@ namespace DNX.ProductDetail.API.Controllers
     public class ProductsController : Controller
     {
         private readonly DnxContext _context;
-
+        private readonly IBus _bus;
+        //public ProductsController(DnxContext context, IBus bus)
+        //{
+        //    _context = context;
+        //    _bus = bus;
+        //}
         public ProductsController(DnxContext context)
         {
             _context = context;
@@ -26,7 +33,6 @@ namespace DNX.ProductDetail.API.Controllers
         [HttpGet]
         public IEnumerable<Product> GetProduct()
         {
-            var user = User;
             return _context.Product;
         }
 
@@ -34,6 +40,12 @@ namespace DNX.ProductDetail.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProduct([FromRoute] int id)
         {
+            var addUserEndpoint = await _bus.GetSendEndpoint(new Uri("rabbitmq://localhost:5672/testqueue"));
+            await addUserEndpoint.Send<TestContract>( new TestContract
+            {
+                Description = "TEST contractttt",
+                Guid = new Guid()
+            });
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

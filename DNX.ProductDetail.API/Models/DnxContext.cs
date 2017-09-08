@@ -22,14 +22,13 @@ namespace DNX.ProductDetail.API.Models
         public virtual DbSet<ProductModelProductDescription> ProductModelProductDescription { get; set; }
         public virtual DbSet<SalesOrderDetail> SalesOrderDetail { get; set; }
         public virtual DbSet<SalesOrderHeader> SalesOrderHeader { get; set; }
-        public virtual DbSet<TestCache> TestCache { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
 
-            optionsBuilder.UseSqlServer(@"Data Source=.;Initial Catalog=dnx;User ID=sa;Password=123456;Connection Timeout=30;");
-        }
+        //    optionsBuilder.UseSqlServer(@"Data Source=.;Initial Catalog=dnx;User ID=sa;Password=123456;Connection Timeout=30;");
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -547,16 +546,6 @@ namespace DNX.ProductDetail.API.Models
                     .WithMany(p => p.SalesOrderHeaderShipToAddress)
                     .HasForeignKey(d => d.ShipToAddressId)
                     .HasConstraintName("FK_SalesOrderHeader_Address_ShipTo_AddressID");
-            });
-
-            modelBuilder.Entity<TestCache>(entity =>
-            {
-                entity.HasIndex(e => e.ExpiresAtTime)
-                    .HasName("Index_ExpiresAtTime");
-
-                entity.Property(e => e.Id).HasMaxLength(449);
-
-                entity.Property(e => e.Value).IsRequired();
             });
 
             modelBuilder.HasSequence<int>("SalesOrderNumber", "SalesLT");

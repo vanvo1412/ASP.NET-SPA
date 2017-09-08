@@ -2,49 +2,64 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using DNX.ProductDetail.API.Models;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Cors.Internal;
-using IdentityModel;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace DNX.ProductDetail.API
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
 
-        public IConfigurationRoot Configuration { get; }
+        public IContainer container { get; private set; }
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
             services.AddMvc();
-            services.AddCors(o => o.AddPolicy("DnxPolicy", builder =>
+            services.AddCors(o => o.AddPolicy("DnxPolicy", b =>
             {
                 //builder.WithOrigins("http://localhost:5002");
-                builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                b.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
             }));
             services.Configure<MvcOptions>(options =>
             {
                 options.Filters.Add(new CorsAuthorizationFilterFactory("DnxPolicy"));
             });
-            var connectionString = Configuration.GetConnectionString("DNXDatabaseLocal");
+
+            var builder = new ContainerBuilder();
+            builder.Register(c =>
+                {
+                    return Bus.Factory.CreateUsingRabbitMq(sbc =>
+                        sbc.Host(new Uri("rabbitmq://localhost:5672/"), h =>
+                        {
+                            h.Username("guest");
+                            h.Password("guest");
+                        })
+                    );
+                })
+                .As<IBusControl>()
+                .As<IPublishEndpoint>()
+                .SingleInstance();
+
+
+            var connectionString = Configuration.GetConnectionString("DNXDatabaseOnAzure"); 
             services.AddDbContext<DnxContext>(opts => opts.UseSqlServer(connectionString));
 
             services.AddSwaggerGen(c =>
@@ -63,6 +78,11 @@ namespace DNX.ProductDetail.API
                     TokenUrl = "http://localhost:5000/token"
                 });
             });
+
+            builder.Populate(services);
+            container = builder.Build();
+            // Create the IServiceProvider based on the container.
+            return new AutofacServiceProvider(container);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,8 +100,8 @@ namespace DNX.ProductDetail.API
                 ApiName = "productdetail",
                 ApiSecret = "productdetail-secret",
                 AllowedScopes = { "productdetail", "openid", "email", "profile" },
-                ClaimsIssuer = "http://localhost:5000",
-                AutomaticAuthenticate = true
+                //ClaimsIssuer = "http://localhost:5000",
+                //AutomaticAuthenticate = true
 
             });
 
@@ -97,14 +117,14 @@ namespace DNX.ProductDetail.API
 
             app.UseMvc();
 
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
-            //else
-            //{
-            //    app.UseExceptionHandler("/Home/Error");
-            //}
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler();
+            }
 
         }
 
