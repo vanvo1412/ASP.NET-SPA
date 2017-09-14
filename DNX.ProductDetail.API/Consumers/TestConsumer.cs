@@ -11,7 +11,7 @@ namespace DNX.ProductDetail.API.Consumers
     {
         public Task Consume(ConsumeContext<TestContract> context)
         {
-            Console.WriteLine($"Adding user {context.Message.Description} {context.Message.Guid}");
+            System.Diagnostics.Debug.WriteLine($"Adding user {context.Message.Description} {context.Message.Guid}");
             return Task.CompletedTask;
         }
     }

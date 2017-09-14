@@ -19,15 +19,15 @@ namespace DNX.ProductDetail.API.Controllers
     {
         private readonly DnxContext _context;
         private readonly IBus _bus;
-        //public ProductsController(DnxContext context, IBus bus)
-        //{
-        //    _context = context;
-        //    _bus = bus;
-        //}
-        public ProductsController(DnxContext context)
+        public ProductsController(DnxContext context, IBus bus)
         {
             _context = context;
+            _bus = bus;
         }
+        //public ProductsController(DnxContext context)
+        //{
+        //    _context = context;
+        //}
 
         // GET: api/Products
         [HttpGet]
@@ -40,10 +40,10 @@ namespace DNX.ProductDetail.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProduct([FromRoute] int id)
         {
-            var addUserEndpoint = await _bus.GetSendEndpoint(new Uri("rabbitmq://localhost:5672/testqueue"));
-            await addUserEndpoint.Send<TestContract>( new TestContract
+            var addUserEndpoint = await _bus.GetSendEndpoint(new Uri("rabbitmq://localhost:5672/GetProductById"));
+            await addUserEndpoint.Send(new TestContract
             {
-                Description = "TEST contractttt",
+                Description = id.ToString(),
                 Guid = new Guid()
             });
             if (!ModelState.IsValid)

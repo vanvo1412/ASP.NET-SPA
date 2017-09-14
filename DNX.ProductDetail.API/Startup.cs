@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using DNX.ProductDetail.API.Consumers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using DNX.ProductDetail.API.Models;
 using MassTransit;
+using MassTransit.Util;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Cors.Internal;
@@ -48,14 +50,21 @@ namespace DNX.ProductDetail.API
             builder.Register(c =>
                 {
                     return Bus.Factory.CreateUsingRabbitMq(sbc =>
-                        sbc.Host(new Uri("rabbitmq://localhost:5672/"), h =>
                         {
-                            h.Username("guest");
-                            h.Password("guest");
-                        })
+                            var host = sbc.Host(new Uri("rabbitmq://localhost:5672/"), h =>
+                            {
+                                h.Username("guest");
+                                h.Password("guest");
+                            });
+                            sbc.ReceiveEndpoint(host, "GetProductById", e =>
+                            {
+                                e.Consumer<TestConsumer>();
+                            });
+                        }
                     );
                 })
                 .As<IBusControl>()
+                .As<IBus>()
                 .As<IPublishEndpoint>()
                 .SingleInstance();
 
@@ -88,7 +97,7 @@ namespace DNX.ProductDetail.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IApplicationLifetime lifetime)
         {
             InitializeDatabase(app);
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
@@ -128,6 +137,14 @@ namespace DNX.ProductDetail.API
             {
                 app.UseExceptionHandler();
             }
+
+            //resolve the bus from the container
+            var bus = container.Resolve<IBusControl>();
+            //start the bus
+            var busHandle = TaskUtil.Await(() => bus.StartAsync());
+
+            //register an action to call when the application is shutting down
+            lifetime.ApplicationStopping.Register(() => busHandle.Stop());
 
         }
 
