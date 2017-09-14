@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
@@ -59,7 +60,8 @@ namespace DNX.ProductDetail.API
                 .SingleInstance();
 
 
-            var connectionString = Configuration.GetConnectionString("DNXDatabaseOnAzure"); 
+            //var connectionString = Configuration.GetConnectionString("DNXDatabaseOnAzure"); 
+            var connectionString = Configuration.GetConnectionString("DNXDatabase");
             services.AddDbContext<DnxContext>(opts => opts.UseSqlServer(connectionString));
 
             services.AddSwaggerGen(c =>
@@ -88,6 +90,7 @@ namespace DNX.ProductDetail.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            InitializeDatabase(app);
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
@@ -126,6 +129,22 @@ namespace DNX.ProductDetail.API
                 app.UseExceptionHandler();
             }
 
+        }
+
+        private void InitializeDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<DnxContext>();
+                context.Database.Migrate();
+                //if (!context.Address.Any() && !context.Product.Any())
+                //{
+                //    var baseDir = AppDomain.CurrentDomain.BaseDirectory;
+
+                //    context.Database.ExecuteSqlCommand(File.ReadAllText(baseDir + "\\data.sql"));
+                //}
+                
+            }
         }
 
     }
