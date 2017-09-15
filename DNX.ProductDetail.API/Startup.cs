@@ -47,26 +47,28 @@ namespace DNX.ProductDetail.API
             });
 
             var builder = new ContainerBuilder();
-            builder.Register(c =>
-                {
-                    return Bus.Factory.CreateUsingRabbitMq(sbc =>
-                        {
-                            var host = sbc.Host(new Uri("rabbitmq://localhost:5672/"), h =>
-                            {
-                                h.Username("guest");
-                                h.Password("guest");
-                            });
-                            sbc.ReceiveEndpoint(host, "GetProductById", e =>
-                            {
-                                e.Consumer<TestConsumer>();
-                            });
-                        }
-                    );
-                })
-                .As<IBusControl>()
-                .As<IBus>()
-                .As<IPublishEndpoint>()
-                .SingleInstance();
+
+            // MassTransit configuration
+            //builder.Register(c =>
+            //    {
+            //        return Bus.Factory.CreateUsingRabbitMq(sbc =>
+            //            {
+            //                var host = sbc.Host(new Uri("rabbitmq://localhost:5672/"), h =>
+            //                {
+            //                    h.Username("guest");
+            //                    h.Password("guest");
+            //                });
+            //                sbc.ReceiveEndpoint(host, "GetProductById", e =>
+            //                {
+            //                    e.Consumer<TestConsumer>();
+            //                });
+            //            }
+            //        );
+            //    })
+            //    .As<IBusControl>()
+            //    .As<IBus>()
+            //    .As<IPublishEndpoint>()
+            //    .SingleInstance();
 
 
             //var connectionString = Configuration.GetConnectionString("DNXDatabaseOnAzure"); 
@@ -138,13 +140,14 @@ namespace DNX.ProductDetail.API
                 app.UseExceptionHandler();
             }
 
-            //resolve the bus from the container
-            var bus = container.Resolve<IBusControl>();
-            //start the bus
-            var busHandle = TaskUtil.Await(() => bus.StartAsync());
+            // Use MassTransit
+            ////resolve the bus from the container
+            //var bus = container.Resolve<IBusControl>();
+            ////start the bus
+            //var busHandle = TaskUtil.Await(() => bus.StartAsync());
 
-            //register an action to call when the application is shutting down
-            lifetime.ApplicationStopping.Register(() => busHandle.Stop());
+            ////register an action to call when the application is shutting down
+            //lifetime.ApplicationStopping.Register(() => busHandle.Stop());
 
         }
 

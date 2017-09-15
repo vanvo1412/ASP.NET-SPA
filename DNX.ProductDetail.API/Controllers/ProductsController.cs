@@ -19,10 +19,12 @@ namespace DNX.ProductDetail.API.Controllers
     {
         private readonly DnxContext _context;
         private readonly IBus _bus;
-        public ProductsController(DnxContext context, IBus bus)
+        private readonly IPublishEndpoint _endpoint;
+        public ProductsController(DnxContext context, IBus bus, IPublishEndpoint endpoint)
         {
             _context = context;
             _bus = bus;
+            _endpoint = endpoint;
         }
         //public ProductsController(DnxContext context)
         //{
@@ -40,8 +42,14 @@ namespace DNX.ProductDetail.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProduct([FromRoute] int id)
         {
-            var addUserEndpoint = await _bus.GetSendEndpoint(new Uri("rabbitmq://localhost:5672/GetProductById"));
-            await addUserEndpoint.Send(new TestContract
+            //var endpoint = await _bus.GetSendEndpoint(new Uri("rabbitmq://localhost:5672/GetProductById"));
+            //await endpoint.Send(new TestContract
+            //{
+            //    Description = id.ToString(),
+            //    Guid = new Guid()
+            //});
+
+            await _endpoint.Publish(new TestContract
             {
                 Description = id.ToString(),
                 Guid = new Guid()
