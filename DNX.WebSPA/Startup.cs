@@ -30,6 +30,9 @@ namespace DNX_SPA
         {
             // Add framework services.
             services.AddMvc();
+              var localPath = new Uri(Configuration["ASPNETCORE_URLS"])?.LocalPath ?? "/";
+            Configuration["BaseUrl"] = localPath;
+            services.Configure<AppSettings>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

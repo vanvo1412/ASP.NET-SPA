@@ -1,3 +1,4 @@
+import { ConfigurationService } from './../../../shared/configuration.service';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, NavigationStart } from "@angular/router";
 
@@ -9,7 +10,8 @@ import { Router, NavigationStart } from "@angular/router";
 })
 export class AppComponent {
     showShadow = false;
-    constructor(router: Router) {
+    constructor(router: Router, private configurationService: ConfigurationService) {
+        this.configurationService.load();
         let previousRoute = router.routerState.snapshot.url;
 
         router.events.subscribe((data: NavigationStart) => {

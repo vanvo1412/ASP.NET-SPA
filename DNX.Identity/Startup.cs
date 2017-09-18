@@ -38,7 +38,8 @@ namespace DNX.Identity
         public void ConfigureServices(IServiceCollection services)
         {
             //var connectionString = Configuration.GetConnectionString("DNXDatabaseOnAzure");
-            var connectionString = Configuration.GetConnectionString("DNXDatabase");
+            //var connectionString = Configuration.GetConnectionString("DNXDatabase");
+            var connectionString = Configuration["DNXDatabase"];
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             services.AddDbContext<DnxContext>(options =>
@@ -104,9 +105,10 @@ namespace DNX.Identity
 
                 var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
                 context.Database.Migrate();
+                var clientUrl = Configuration.GetValue<string>("WebSpaUrl");
                 if (!context.Clients.Any())
                 {
-                    foreach (var client in Config.GetClients())
+                    foreach (var client in Config.GetClients(clientUrl))
                     {
                         context.Clients.Add(client.ToEntity());
                     }

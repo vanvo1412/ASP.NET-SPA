@@ -19,7 +19,7 @@ export class FetchDataComponent {
 
         _componentPageTitle.title = "Fetch data";
 
-        http.get(this.appConfig.API_ENDPOINT + '/api/products').subscribe(result => {
+        http.get(this.appConfig.ProductDetailApiUrl + '/api/products').subscribe(result => {
             this.products = result.json() as Product[];
         });
     }

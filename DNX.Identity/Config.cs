@@ -15,7 +15,7 @@ namespace DNX.Identity
             };
         }
 
-        public static IEnumerable<Client> GetClients()
+        public static IEnumerable<Client> GetClients(string clientUrl)
         {
             return new List<Client>
             {

@@ -2,8 +2,9 @@ import { IAppConfig } from './app-config.interface';
 import { InjectionToken } from "@angular/core";
 
 export const AppConfigConstant: IAppConfig = {
-    API_ENDPOINT: "http://localhost:5001",
-    IDENTITY_SERVER: "http://localhost:5000"
+    ProductDetailApiUrl: "http://localhost:5001",
+    IdentityServerUrl: "http://localhost:5000",
+    BaseUrl: "http://localhost:5002"
 }
 
 export let AppConfig = new InjectionToken<IAppConfig>("app.config")

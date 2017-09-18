@@ -1,14 +1,44 @@
-version: '2'
+version: '3'
 
 services:
   dnx.productdetail.api:
     image: dnx.productdetail.api
+    environment:
+      - DNXDatabase=Server=dnx.db;Database=dnx;User=sa;Password=P@ssw0rd
+      - IdentityServerUrl=http://dnx.identity
     build:
       context: ./DNX.ProductDetail.API
       dockerfile: Dockerfile
-
+    ports:
+      - "5001:80"
+    depends_on:
+      - dnx.db
   dnx.identity:
     image: dnx.identity
+    environment:
+      - DNXDatabase=Server=dnx.db;Database=dnx;User=sa;Password=P@ssw0rd
+      - WebSpaUrl=http://dnx.webspa
     build:
       context: ./DNX.Identity
       dockerfile: Dockerfile
+    ports:
+      - "5000:80"
+    depends_on:
+      - dnx.db
+  dnx.webspa:
+    image: dnx.webspa
+    environment:
+      - IdentityServerUrl=http://dnx.identity
+      - ProductDetailApiUrl=http://dnx.productdetail.api
+    build:
+      context: ./DNX.WebSPA
+      dockerfile: Dockerfile
+    ports:
+      - "5002:80"
+  dnx.db:
+    image: "microsoft/mssql-server-windows"
+    environment:
+        SA_PASSWORD: "P@ssw0rd"
+        ACCEPT_EULA: "Y"
+    ports:
+      - "5434:1433"

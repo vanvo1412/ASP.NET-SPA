@@ -1,4 +1,6 @@
-FROM microsoft/dotnet:1.1-runtime-nanoserver
-WORKDIR /dotnetapp
-COPY out .
-ENTRYPOINT ["dotnet", "DNX_SPA.dll"]
+FROM microsoft/aspnetcore:1.1
+ARG source
+WORKDIR /app
+EXPOSE 80
+COPY ${source:-obj/Docker/publish} .
+ENTRYPOINT ["dotnet", "DNX.WebSPA.dll"]  

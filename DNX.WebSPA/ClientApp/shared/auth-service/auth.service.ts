@@ -1,10 +1,12 @@
+import { ConfigurationService } from './../configuration.service';
 import { LoginComponent } from './../../app/components/login/login.component';
 import { Router } from '@angular/router';
 import { Injectable, EventEmitter } from '@angular/core';
 import { UserManager, User, Log } from 'oidc-client';
 import { Observable } from "rxjs";
 
-const settings: any = {
+// Default options
+let settings: any = {
     //Required properties
     authority: 'http://localhost:5000',
     client_id: 'spa',
@@ -33,7 +35,26 @@ export class AuthService {
 
     authHeaders: Headers;
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private configurationService: ConfigurationService) {
+        settings = {
+            //Required properties
+            authority: configurationService.appConfig.IdentityServerUrl,
+            client_id: 'spa',
+            redirect_uri: `${configurationService.appConfig.BaseUrl}/signin-callback.html`,
+            response_type: 'id_token token',
+            scope: 'openid profile productdetail',
+        
+            silent_redirect_uri: `${configurationService.appConfig.BaseUrl}/silent-renew-callback.html`,
+            post_logout_redirect_uri: `${configurationService.appConfig.BaseUrl}`,
+        
+            automaticSilentRenew: true,
+            accessTokenExpiringNotificationTime: 10,
+            silentRequestTimeout: 10000,
+        
+            filterProtocolClaims: true,
+            loadUserInfo: false,
+        };
+
         this.userManager.getUser()
             .then((user) => {
                 if (user) {

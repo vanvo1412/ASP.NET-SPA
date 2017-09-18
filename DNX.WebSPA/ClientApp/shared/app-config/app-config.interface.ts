@@ -1,4 +1,5 @@
 export interface IAppConfig {
-    API_ENDPOINT: string;
-    IDENTITY_SERVER: string;
+    ProductDetailApiUrl: string;
+    IdentityServerUrl: string;
+    BaseUrl: string;
 }
