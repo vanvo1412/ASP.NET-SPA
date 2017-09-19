@@ -27,9 +27,9 @@ export class ConfigurationService {
             console.log('server settings loaded');
             this.appConfig = response.json();
             console.log(this.appConfig);
-            localStorage.setItem("IdentityServerUrl", this.appConfig.IdentityServerUrl)
-            localStorage.setItem("ProductDetailApiUrl", this.appConfig.ProductDetailApiUrl)
-            localStorage.setItem("BaseUrl", this.appConfig.BaseUrl)
+            localStorage.setItem("IdentityServerUrl", this.appConfig.identityServerUrl)
+            localStorage.setItem("ProductDetailApiUrl", this.appConfig.productDetailApiUrl)
+            localStorage.setItem("BaseUrl", this.appConfig.baseUrl)
         });
     }
 }

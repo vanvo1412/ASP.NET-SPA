@@ -6,29 +6,30 @@ import { UserManager, User, Log } from 'oidc-client';
 import { Observable } from "rxjs";
 
 // Default options
-let settings: any = {
-    //Required properties
-    authority: 'http://localhost:5000',
-    client_id: 'spa',
-    redirect_uri: 'http://localhost:5002/signin-callback.html',
-    response_type: 'id_token token',
-    scope: 'openid profile productdetail',
+// let settings: any = {
+//     //Required properties
+//     authority: 'http://localhost:5000',
+//     client_id: 'spa',
+//     redirect_uri: 'http://localhost:5002/signin-callback.html',
+//     response_type: 'id_token token',
+//     scope: 'openid profile productdetail',
 
-    silent_redirect_uri: 'http://localhost:5002/silent-renew-callback.html',
-    post_logout_redirect_uri: 'http://localhost:5002',
+//     silent_redirect_uri: 'http://localhost:5002/silent-renew-callback.html',
+//     post_logout_redirect_uri: 'http://localhost:5002',
 
-    automaticSilentRenew: true,
-    accessTokenExpiringNotificationTime: 10,
-    silentRequestTimeout: 10000,
+//     automaticSilentRenew: true,
+//     accessTokenExpiringNotificationTime: 10,
+//     silentRequestTimeout: 10000,
 
-    filterProtocolClaims: true,
-    loadUserInfo: false,
-};
+//     filterProtocolClaims: true,
+//     loadUserInfo: false,
+// };
 
 @Injectable()
 export class AuthService {
 
-    userManager: UserManager = new UserManager(settings);
+    // userManager: UserManager = new UserManager(settings);
+    userManager: UserManager;
     userLoadededEvent: EventEmitter<User> = new EventEmitter<User>();
     currentUser: User;
     loggedIn = false;
@@ -36,16 +37,17 @@ export class AuthService {
     authHeaders: Headers;
 
     constructor(private router: Router, private configurationService: ConfigurationService) {
-        settings = {
+        console.log(configurationService.appConfig);
+        const settings = {
             //Required properties
-            authority: configurationService.appConfig.IdentityServerUrl,
+            authority: configurationService.appConfig.identityServerUrl,
             client_id: 'spa',
-            redirect_uri: `${configurationService.appConfig.BaseUrl}/signin-callback.html`,
+            redirect_uri: `${configurationService.appConfig.baseUrl}/signin-callback.html`,
             response_type: 'id_token token',
             scope: 'openid profile productdetail',
         
-            silent_redirect_uri: `${configurationService.appConfig.BaseUrl}/silent-renew-callback.html`,
-            post_logout_redirect_uri: `${configurationService.appConfig.BaseUrl}`,
+            silent_redirect_uri: `${configurationService.appConfig.baseUrl}/silent-renew-callback.html`,
+            post_logout_redirect_uri: `${configurationService.appConfig.baseUrl}`,
         
             automaticSilentRenew: true,
             accessTokenExpiringNotificationTime: 10,
@@ -54,7 +56,8 @@ export class AuthService {
             filterProtocolClaims: true,
             loadUserInfo: false,
         };
-
+        console.log(settings);
+        this.userManager = new UserManager(settings);
         this.userManager.getUser()
             .then((user) => {
                 if (user) {

@@ -45,10 +45,10 @@ namespace DNX.Identity
                     RequireConsent = false,
 
                     // where to redirect to after login
-                    RedirectUris = { "http://localhost:5002/signin-callback.html" },
+                    RedirectUris = { $"{clientUrl}/signin-callback.html" },
                     // where to redirect to after logout
-                    PostLogoutRedirectUris = { "http://localhost:5002/silent-renew-callback.html" },
-                    AllowedCorsOrigins = {"http://localhost:5002"},
+                    PostLogoutRedirectUris = { "${clientUrl}/silent-renew-callback.html" },
+                    AllowedCorsOrigins = {clientUrl},
 
                     // secret for authentication
                     ClientSecrets =

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DNX.ProductDetail.API.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class ProductDetailInitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

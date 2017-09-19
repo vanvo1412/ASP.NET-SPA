@@ -30,11 +30,15 @@ services:
     environment:
       - IdentityServerUrl=http://dnx.identity
       - ProductDetailApiUrl=http://dnx.productdetail.api
+      - BaseUrl=http://dnx.webspa
     build:
       context: ./DNX.WebSPA
       dockerfile: Dockerfile
     ports:
       - "5002:80"
+    external_links:
+      - dnx.identity
+      - dnx.productdetail.api
   dnx.db:
     image: "microsoft/mssql-server-windows"
     environment:

@@ -11,8 +11,8 @@ using System;
 namespace DNX.ProductDetail.API.Migrations
 {
     [DbContext(typeof(DnxContext))]
-    [Migration("20170913155603_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20170913155603_ProductDetailInitialCreate")]
+    partial class ProductDetailInitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

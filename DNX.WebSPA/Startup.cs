@@ -30,8 +30,6 @@ namespace DNX_SPA
         {
             // Add framework services.
             services.AddMvc();
-              var localPath = new Uri(Configuration["ASPNETCORE_URLS"])?.LocalPath ?? "/";
-            Configuration["BaseUrl"] = localPath;
             services.Configure<AppSettings>(Configuration);
         }
 

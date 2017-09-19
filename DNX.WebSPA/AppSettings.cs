@@ -9,5 +9,6 @@ namespace DNX_SPA
     {
         public string IdentityServerUrl { get; set; }
         public string ProductDetailApiUrl { get; set; }
+        public string BaseUrl { get; set; }
     }
 }
