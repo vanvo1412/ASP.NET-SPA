@@ -1,3 +1,5 @@
+import { AuthService } from './shared/auth-service/auth.service';
+import { AuthGuard } from './shared/auth-service/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -38,9 +40,9 @@ export function createTranslateLoader(http: Http) {
       deps: [Http]
     }),
     MaterialModule,
-    FlexLayoutModule,
+    FlexLayoutModule
   ],
-  providers: [],
+  providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

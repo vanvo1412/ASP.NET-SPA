@@ -143,6 +143,35 @@ namespace DNX.Identity
                         IdentityServerConstants.StandardScopes.Profile,
                         "productdetail"
                     }
+                },
+                new Client
+                {
+                    ClientId = "angular",
+                    ClientName = "Angular Implicit flow",
+                    // no interactive user, use the clientid/secret for authentication
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser = true,
+                    RequireConsent = false,
+
+                    // where to redirect to after login
+                    RedirectUris = { $"http://localhost:4200/signin-callback.html" },
+                    // where to redirect to after logout
+                    PostLogoutRedirectUris = { "http://localhost:4200/silent-renew-callback.html" },
+                    AllowedCorsOrigins = {"http://localhost:4200"},
+
+                    // secret for authentication
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    },
+
+                    // scopes that client has access to
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "productdetail"
+                    }
                 }
             };
         }

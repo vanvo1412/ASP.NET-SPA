@@ -1,3 +1,5 @@
+import { AuthGuard } from './shared/auth-service/auth.guard';
+import { CanActivate } from '@angular/router';
 import { Routes } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
@@ -11,7 +13,8 @@ export const AppRoutes: Routes = [{
     loadChildren: './dashboard/dashboard.module#DashboardModule'
   }, {
     path: 'apps',
-    loadChildren: './apps/apps.module#AppsModule'
+    loadChildren: './apps/apps.module#AppsModule',
+    canActivate: [AuthGuard]
   }, {
     path: 'widgets',
     loadChildren: './widgets/widgets.module#WidgetsModule'
