@@ -1,3 +1,5 @@
+import { environment } from './../environments/environment';
+import { reducers } from './state/reducers/index';
 import { AuthService } from './shared/auth-service/auth.service';
 import { AuthGuard } from './shared/auth-service/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +18,9 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 import { SharedModule } from './shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './assets/i18n', '.json');
@@ -40,7 +45,13 @@ export function createTranslateLoader(http: Http) {
       deps: [Http]
     }),
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    StoreModule.forRoot(reducers, {
+      initialState: {
+      }
+    }),
+    !environment.production ? StoreDevtoolsModule.instrument({maxAge: 50}) : [],
+    EffectsModule.forRoot([])
   ],
   providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
