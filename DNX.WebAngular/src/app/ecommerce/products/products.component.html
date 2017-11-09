@@ -74,7 +74,7 @@
   <div fxLayout="row" fxLayoutWrap="wrap">
     <div fxFlex.gt-sm="25" fxFlex.gt-xs="33.3333%" fxFlex="100" *ngFor="let product of products">
       <md-card>
-        <div class="media-grid">
+        <div class="media-grid" [routerLink]="['/detail']">
           <figure>
             <div class="product-badge" *ngIf="product.status === 'sale'"><span>Sale</span></div>
             <img src="assets/images/unsplash/{{ product.id }}.jpg">
@@ -93,7 +93,7 @@
                   <md-icon>bookmark</md-icon>
                 </a>
               </p>
-            </figcaption>     
+            </figcaption>
           </figure>
         </div>
         <md-card-content>
