@@ -1,3 +1,4 @@
+import { ProductLayoutComponent } from './layouts/product/product-layout.component';
 import { AuthGuard } from './shared/auth-service/auth.guard';
 import { CanActivate } from '@angular/router';
 import { Routes } from '@angular/router';
@@ -7,42 +8,16 @@ import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 
 export const AppRoutes: Routes = [{
   path: '',
-  component: AdminLayoutComponent,
+  component: ProductLayoutComponent,
   children: [{
     path: '',
     loadChildren: './dashboard/dashboard.module#DashboardModule'
-  }, {
-    path: 'apps',
-    loadChildren: './apps/apps.module#AppsModule',
-    canActivate: [AuthGuard]
-  }, {
-    path: 'widgets',
-    loadChildren: './widgets/widgets.module#WidgetsModule'
-  }, {
-    path: 'material',
-    loadChildren: './material/material.module#MaterialComponentsModule'
-  }, {
+  },
+  {
     path: 'ecommerce',
     loadChildren: './ecommerce/ecommerce.module#EcommerceModule'
-  }, {
-    path: 'forms',
-    loadChildren: './forms/forms.module#FormModule'
-  }, {
-    path: 'tables',
-    loadChildren: './tables/tables.module#TablesModule'
-  }, {
-    path: 'charts',
-    loadChildren: './chartlib/chartlib.module#ChartlibModule'
-  }, {
-    path: 'maps',
-    loadChildren: './maps/maps.module#MapModule'
-  }, {
-    path: 'dragndrop',
-    loadChildren: './dragndrop/dragndrop.module#DragndropModule'
-  }, {
-    path: 'pages',
-    loadChildren: './pages/pages.module#PagesModule'
-  }]
+  }
+]
 }, {
   path: '',
   component: AuthLayoutComponent,

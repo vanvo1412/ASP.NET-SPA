@@ -7,6 +7,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 export const EcommerceRoutes: Routes = [
   {
     path: '',
+    // component: ProductsComponent,
     children: [{
       path: 'products',
       component: ProductsComponent
