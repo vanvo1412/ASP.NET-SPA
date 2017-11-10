@@ -1,4 +1,4 @@
-import { ProductLayoutComponent } from './layouts/product/product-layout.component';
+import { EcommerceLayoutComponent } from './layouts/ecommerce/ecommerce-layout.component';
 import { AuthGuard } from './shared/auth-service/auth.guard';
 import { CanActivate } from '@angular/router';
 import { Routes } from '@angular/router';
@@ -8,13 +8,14 @@ import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 
 export const AppRoutes: Routes = [{
   path: '',
-  component: ProductLayoutComponent,
-  children: [{
-    path: '',
-    loadChildren: './dashboard/dashboard.module#DashboardModule'
-  },
+  component: EcommerceLayoutComponent,
+  children: [
+  //   {
+  //   path: '',
+  //   loadChildren: './dashboard/dashboard.module#DashboardModule'
+  // },
   {
-    path: 'ecommerce',
+    path: '',
     loadChildren: './ecommerce/ecommerce.module#EcommerceModule'
   }
 ]

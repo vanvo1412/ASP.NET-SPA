@@ -7,10 +7,10 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
 import * as Ps from 'perfect-scrollbar';
 
 @Component({
-  selector: 'product-app-layout',
-  templateUrl: './product-layout.component.html'
+  selector: 'ecommerce-layout',
+  templateUrl: './ecommerce-layout.component.html'
 })
-export class ProductLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
+export class EcommerceLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private _router: Subscription;
 

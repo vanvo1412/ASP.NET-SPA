@@ -9,7 +9,7 @@ export const EcommerceRoutes: Routes = [
     path: '',
     // component: ProductsComponent,
     children: [{
-      path: 'products',
+      path: '',
       component: ProductsComponent
     }, {
       path: 'compact',

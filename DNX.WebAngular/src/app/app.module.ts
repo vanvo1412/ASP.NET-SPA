@@ -1,4 +1,4 @@
-import { ProductLayoutComponent } from './layouts/product/product-layout.component';
+import { EcommerceLayoutComponent } from './layouts/ecommerce/ecommerce-layout.component';
 import { environment } from './../environments/environment';
 import { reducers } from './state/reducers/index';
 import { AuthService } from './shared/auth-service/auth.service';
@@ -32,7 +32,7 @@ export function createTranslateLoader(http: Http) {
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    ProductLayoutComponent
+    EcommerceLayoutComponent
   ],
   imports: [
     BrowserModule,
