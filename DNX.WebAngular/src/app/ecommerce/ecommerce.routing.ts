@@ -15,7 +15,7 @@ export const EcommerceRoutes: Routes = [
       path: 'compact',
       component: ProductsCompactComponent
     }, {
-      path: 'detail',
+      path: 'detail/:id',
       component: ProductDetailComponent
     }]
   }

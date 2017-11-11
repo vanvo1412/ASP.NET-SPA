@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DNX.ProductDetail.API.Helper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DNX.ProductDetail.API.Models;
 using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
 
 namespace DNX.ProductDetail.API.Controllers
 {
@@ -22,9 +24,11 @@ namespace DNX.ProductDetail.API.Controllers
 
         // GET: api/Products
         [HttpGet]
-        public IEnumerable<Product> GetProduct()
+        [AllowAnonymous]
+        public IEnumerable<Product> GetProduct(string q)
         {
-            return _context.Product;
+            var pagination = JsonConvert.DeserializeObject<Pagination>(q);
+            return _context.Product.Take(pagination.Take);
         }
 
         // GET: api/Products/5

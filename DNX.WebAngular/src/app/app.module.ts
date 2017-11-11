@@ -1,3 +1,4 @@
+import { AppConfigConstant } from './shared/app-config/app-config.constants';
 import { EcommerceLayoutComponent } from './layouts/ecommerce/ecommerce-layout.component';
 import { environment } from './../environments/environment';
 import { reducers } from './state/reducers/index';
@@ -22,6 +23,7 @@ import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AppConfig } from 'app/shared/app-config/app-config.constants';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './assets/i18n', '.json');

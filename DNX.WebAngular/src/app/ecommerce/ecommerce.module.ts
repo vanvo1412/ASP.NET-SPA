@@ -1,3 +1,4 @@
+import { ProductService } from './../services/product-service';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -20,6 +21,7 @@ import { EcommerceRoutes } from './ecommerce.routing';
 import { ProductsComponent } from './products/products.component';
 import { ProductsCompactComponent } from './products-compact/products-compact.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { HttpClient } from 'app/shared/http-client/http-client';
 
 @NgModule({
   imports: [
@@ -42,7 +44,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
   declarations: [
   ProductsComponent,
   ProductsCompactComponent,
-  ProductDetailComponent]
+  ProductDetailComponent],
+  providers: [ProductService, HttpClient]
 })
 
 export class EcommerceModule {}
