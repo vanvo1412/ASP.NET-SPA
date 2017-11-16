@@ -73,7 +73,7 @@
           </a>
           <md-nav-list class="sub-menu" *ngIf="menuitem.type === 'sub'">
             <md-list-item *ngFor="let childitem of menuitem.children" routerLinkActive="open">
-              <a [routerLink]="['/', menuitem.state, childitem.state ]" class="relative" md-ripple>{{ childitem.name | translate }}</a>
+              <a [routerLink]="['/']" [queryParams]="{menuItemState: menuitem.state, childItemState: childitem.state }" class="relative" md-ripple>{{ childitem.name | translate }}</a>
             </md-list-item>
           </md-nav-list>
         </md-list-item>

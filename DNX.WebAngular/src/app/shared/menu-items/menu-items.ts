@@ -25,21 +25,16 @@ const MENUITEMS = [
     state: '/',
     name: 'HOME',
     type: 'link',
-    icon: 'explore'
+    icon: 'home'
   },
   {
-    state: 'ecommerce',
-    name: 'ECOMMERCE',
+    state: 'category',
+    name: 'Category',
     type: 'sub',
-    icon: 'looks_3',
-    badge: [
-      {type: 'red', value: 'new'
-      }
-    ],
+    icon: 'list',
     children: [
-      {state: 'products', name: 'PRODUCTS'},
-      {state: 'compact', name: 'COMPACT'},
-      {state: 'detail', name: 'DETAIL'},
+      {state: 'soaps', name: 'Soaps'},
+      {state: 'essential_oils', name: 'Essential oils'},
     ]
   }
 ];
