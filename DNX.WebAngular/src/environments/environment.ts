@@ -5,5 +5,7 @@
 
 export const environment = {
   production: false,
-  productDetailAPI: 'http://localhost:5001'
+  productDetailAPIUrl: 'http://localhost:5001',
+  identityServerUrl: 'http://localhost:5000',
+  thisSiteUrl: 'http://localhost:4200'
 };

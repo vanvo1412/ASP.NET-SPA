@@ -2,18 +2,19 @@ import { Router } from '@angular/router';
 import { Injectable, EventEmitter } from '@angular/core';
 import { UserManager, User, Log } from 'oidc-client';
 import { Observable } from "rxjs";
+import { environment } from 'environments/environment';
 
 // Default options
 let settings: any = {
     //Required properties
-    authority: 'http://localhost:5000',
+    authority: environment.identityServerUrl,
     client_id: 'angular',
-    redirect_uri: 'http://localhost:4200/signin-callback.html',
+    redirect_uri: `${environment.thisSiteUrl}/signin-callback.html`,
     response_type: 'id_token token',
     scope: 'openid profile productdetail',
 
-    silent_redirect_uri: 'http://localhost:4200/silent-renew-callback.html',
-    post_logout_redirect_uri: 'http://localhost:4200',
+    silent_redirect_uri: `${environment.thisSiteUrl}/silent-renew-callback.html`,
+    post_logout_redirect_uri: environment.thisSiteUrl,
 
     automaticSilentRenew: true,
     accessTokenExpiringNotificationTime: 10,
