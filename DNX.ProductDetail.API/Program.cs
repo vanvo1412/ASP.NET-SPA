@@ -21,6 +21,8 @@ namespace DNX.ProductDetail.API
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .ConfigureServices(s => s.AddAutofac())
+                .UseSetting("detailedErrors", "true")
+                .CaptureStartupErrors(true)
                 .Build();
     }
 }

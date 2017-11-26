@@ -23,27 +23,45 @@
       <md-icon>person</md-icon>
     </button>
     <md-menu #user="mdMenu" x-position="before">
-      <button md-menu-item>
-        <md-icon>settings</md-icon>
-        Settings
-      </button>
-      <button md-menu-item>
-        <md-icon>account_box</md-icon>
-        Profile
-      </button>
-      <button md-menu-item>
-        <md-icon>notifications_off</md-icon>
-        Disable notifications
-      </button>
-      <button md-menu-item>
-        <md-icon>exit_to_app</md-icon>
-        Sign Out
-      </button>
+      <div *ngIf="(isLoggedIn | async); then loggedInMenu else loginMenu"></div>
+      <ng-template #loggedInMenu>
+        <button md-menu-item>
+          <md-icon>settings</md-icon>
+          Settings
+        </button>
+        <button md-menu-item>
+          <md-icon>account_box</md-icon>
+          Profile
+        </button>
+        <button md-menu-item>
+          <md-icon>notifications_off</md-icon>
+          Disable notifications
+        </button>
+        <button md-menu-item>
+          <md-icon>exit_to_app</md-icon>
+          Sign Out
+        </button>
+      </ng-template>
+      <ng-template #loginMenu>
+        <button md-menu-item>
+          <md-icon>settings</md-icon>
+          Register
+        </button>
+        <button md-menu-item (click)="login()">
+          <md-icon>settings</md-icon>
+          Login
+        </button>
+        <button md-menu-item>
+            <md-icon>settings</md-icon>
+            Forget password
+          </button>
+      </ng-template>
     </md-menu>
   </md-toolbar>
 
   <md-sidenav-container class="app-inner">
-    <md-sidenav #sidemenu class="sidebar-panel" id="sidebar-panel" [mode]="isOver() ? 'over' : 'side'" [opened]="!isOver()" (mouseover)="menuMouseOver()" (mouseout)="menuMouseOut()">
+    <md-sidenav #sidemenu class="sidebar-panel" id="sidebar-panel" [mode]="isOver() ? 'over' : 'side'" [opened]="!isOver()" (mouseover)="menuMouseOver()"
+      (mouseout)="menuMouseOut()">
       <md-nav-list appAccordion class="navigation">
         <md-list-item appAccordionLink *ngFor="let menuitem of menuItems.getAll()" group="{{menuitem.state}}">
           <a appAccordionToggle class="relative" md-ripple [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'">
@@ -250,7 +268,7 @@
         <md-select placeholder="Language" class="mt-1" [(ngModel)]="currentLang" #langSelect="ngModel" (ngModelChange)="translate.use(currentLang)">
           <md-option *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</md-option>
         </md-select>
-     </div>
+      </div>
     </md-card-content>
   </md-card>
   <!-- /Demo Purposes Only -->

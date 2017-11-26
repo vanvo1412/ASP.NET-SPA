@@ -1,3 +1,4 @@
+import { AuthService } from './../../shared/auth-service/auth.service';
 import { Component, OnInit, OnDestroy, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { MenuItems } from '../../shared/menu-items/menu-items';
@@ -5,6 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { TranslateService } from 'ng2-translate/ng2-translate';
 import * as Ps from 'perfect-scrollbar';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'ecommerce-layout',
@@ -22,11 +24,13 @@ export class EcommerceLayoutComponent implements OnInit, OnDestroy, AfterViewIni
   collapseSidebar: boolean;
   compactSidebar: boolean;
   currentLang = 'en';
+  isLoggedIn: Observable<boolean>;
+
 
   @ViewChild('sidemenu') sidemenu;
   @ViewChild('root') root;
 
-  constructor(private router: Router, public menuItems: MenuItems, public translate: TranslateService ) {
+  constructor(private router: Router, public menuItems: MenuItems, public translate: TranslateService, private authService: AuthService ) {
     const browserLang: string = translate.getBrowserLang();
     translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
   }
@@ -50,6 +54,8 @@ export class EcommerceLayoutComponent implements OnInit, OnDestroy, AfterViewIni
         Ps.update(elemContent);
       }
     });
+
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   ngAfterViewInit() {
@@ -84,6 +90,10 @@ export class EcommerceLayoutComponent implements OnInit, OnDestroy, AfterViewIni
       bool = true;
     }
     return bool;
+  }
+
+  login(){
+    this.authService.startSigninMainWindow();
   }
 
   menuMouseOver(): void {

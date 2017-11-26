@@ -119,7 +119,7 @@ namespace DNX.ProductDetail.API
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<DnxContext>();
-                context.Database.Migrate();
+                //context.Database.Migrate();
                 //if (!context.Address.Any() && !context.Product.Any())
                 //{
                 //    var baseDir = AppDomain.CurrentDomain.BaseDirectory;
