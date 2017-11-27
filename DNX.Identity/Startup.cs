@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using DNX.Identity.Data;
 using DNX.Identity.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +14,7 @@ using Microsoft.Extensions.Logging;
 using DNX.Identity.Services;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
+using Microsoft.AspNetCore.Identity;
 
 namespace DNX.Identity
 {
@@ -58,15 +57,15 @@ namespace DNX.Identity
             services.AddTransient<IRedirectService, RedirectService>();
 
             services.AddIdentityServer()
-                .AddTemporarySigningCredential()
                 .AddAspNetIdentity<ApplicationUser>()
-                .AddConfigurationStore(builder =>
-                    builder.UseSqlServer(connectionString, options =>
-                        options.MigrationsAssembly(migrationsAssembly)))
-                .AddOperationalStore(builder =>
-                    builder.UseSqlServer(connectionString, options =>
-                        options.MigrationsAssembly(migrationsAssembly)))
-                .AddProfileService<ProfileService>();
+                .AddOperationalStore(options =>
+                    options.ConfigureDbContext = builder =>
+                        builder.UseSqlServer(connectionString, sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)))
+                .AddConfigurationStore(options =>
+                    options.ConfigureDbContext = builder =>
+                        builder.UseSqlServer(connectionString, sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)))
+                .AddProfileService<ProfileService>()
+                .AddDeveloperSigningCredential();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -84,7 +83,7 @@ namespace DNX.Identity
 
             app.UseStaticFiles();
 
-            app.UseIdentity();
+            app.UseAuthentication();
 
             app.UseIdentityServer();
 

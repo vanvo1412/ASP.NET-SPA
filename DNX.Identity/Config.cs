@@ -47,7 +47,7 @@ namespace DNX.Identity
                     // where to redirect to after login
                     RedirectUris = { $"{clientUrl}/signin-callback.html" },
                     // where to redirect to after logout
-                    PostLogoutRedirectUris = { "${clientUrl}/silent-renew-callback.html" },
+                    PostLogoutRedirectUris = { $"{clientUrl}/silent-renew-callback.html" },
                     AllowedCorsOrigins = {clientUrl},
 
                     // secret for authentication
