@@ -8,7 +8,7 @@ import { environment } from 'environments/environment';
 let settings: any = {
     //Required properties
     authority: environment.identityServerUrl,
-    client_id: 'angular',
+    client_id: 'spa',
     redirect_uri: `${environment.thisSiteUrl}/signin-callback.html`,
     response_type: 'id_token token',
     scope: 'openid profile productdetail',
