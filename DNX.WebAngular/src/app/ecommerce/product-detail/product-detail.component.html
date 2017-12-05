@@ -1,24 +1,28 @@
-<!-- <md-card>
+<md-card *ngIf="product">
   <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign=" stretch" class="mb-1">
     <div fxFlex.gt-md="40" fxFlex.gt-sm="50" fxFlex="100">
-      <div class="card-image-header product-image-header" style="background-image: url(assets/images/unsplash/fashion3.jpg); background-position: top;"></div>
+      <!-- <div class="card-image-header product-image-header" style="background-image: url(assets/images/unsplash/fashion3.jpg); background-position: top;"></div> -->
+      <div class="card-image-header product-image-header" style=" background-position: top;">
+        <img style="width: inherit" src="data:image/png;base64,{{product.thumbNailPhoto}}" />
+      </div>
+
     </div>
     <div fxFlex.gt-md="60" fxFlex.gt-sm="50" fxFlex="100" class="pa-1">
       <div class="product-detail-header">
         <h1 class="ma-0 pa-0"><strong>{{ product.name }}</strong></h1>
-        <h6 class="mat-text-muted ma-0 pa-0">{{ product.description }}</h6>
+        <h6 class="mat-text-muted ma-0 pa-0">{{ product.name }}</h6>
 
         <div fxLayout="row" fxLayoutWrap="wrap">
           <span fxLayout="row">
-            <span *ngFor="let star of stars" [class.mat-text-default]="star <= product.rating" class="mat-text-muted">&#9733;</span>
+            <span *ngFor="let star of stars" [class.mat-text-default]="star <= 5" class="mat-text-muted">&#9733;</span>
           </span>
-          <span class="px-1">({{ product.rating }}) Votes</span>
-          <a href="javascript:;">{{ product.rating }} customer reviews</a>
+          <span class="px-1">({{ 5 }}) Votes</span>
+          <a href="javascript:;">{{ 5 }} customer reviews</a>
         </div>
       </div>
       <h5 class="mat-text-primary mt-1">
-        <span> $ {{ product.price }}</span>
-        <span class="strikethrough mat-text-muted text-sm" *ngIf="product.discounted === 'discounted'">$ {{ product.discount }}</span>
+        <span> $ {{ product.listPrice }}</span>
+        <!-- <span class="strikethrough mat-text-muted text-sm" *ngIf="product.discounted === 'discounted'">$ {{ 5 }}</span> -->
         <span class="text-xs mat-text-muted">*excluding tax</span>
       </h5>
 
@@ -118,5 +122,4 @@
       </md-list>
     </md-tab>
   </md-tab-group>
-</md-card> -->
-asdasdasd
+</md-card>

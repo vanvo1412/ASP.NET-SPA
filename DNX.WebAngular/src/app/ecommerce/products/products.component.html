@@ -7,6 +7,12 @@
     <hr>
 
     <div class="pa-1">
+      <h6>Items</h6>
+      <md-slider #slidey (input)="reloadProducts($event)" [tickInterval]="2"></md-slider>
+      {{slidey.value}}
+    </div>
+
+    <div class="pa-1">
       <h6 class="mt-1">Essential oils</h6>
       <div class="pb-1">
         <md-checkbox>Lemon grass</md-checkbox>
@@ -61,9 +67,11 @@
     <div fxFlex.gt-sm="25" fxFlex.gt-xs="33.3333%" fxFlex="100" *ngFor="let product of products">
       <md-card>
         <!-- <div class="media-grid" [routerLink]="['/detail', product.productId]"> -->
-          <div class="media-grid" (click)="redirect(product.productId)">
+        <div class="media-grid" (click)="redirect(product.productId)">
           <figure>
-            <div class="product-badge" *ngIf="product.status === 'sale'"><span>Sale</span></div>
+            <!-- <div class="product-badge" *ngIf="product.status === 'sale'">
+              <span>Sale</span>
+            </div> -->
             <img src="{{'data:image/png;base64,' + product.thumbNailPhoto}}">
             <figcaption>
               <p>
@@ -87,11 +95,11 @@
           <div fxLayout="row" fxLayoutAlign="center center">
             <div fxFlex>
               <p class="ma-0">{{ product.name }}</p>
-              <p class="ma-0 pa-0 text-md">{{ product.description }}</p>
+              <p class="ma-0 pa-0 text-md">{{ product.name }}</p>
             </div>
             <div class="mat-text-primary text-xl">
-              <span class="strikethrough mat-text-muted text-sm" *ngIf="product.discounted === 'discounted'">$ {{ product.discount }}</span>
-              <span> $ {{ product.price }}</span>
+              <!-- <span class="strikethrough mat-text-muted text-sm" *ngIf="product.discounted === 'discounted'">$ {{ product.discount }}</span> -->
+              <span> $ {{ product.listPrice }}</span>
             </div>
           </div>
         </md-card-content>
