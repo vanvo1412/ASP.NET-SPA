@@ -15,7 +15,7 @@ namespace DNX.Identity
             };
         }
 
-        public static IEnumerable<Client> GetClients(string clientUrl)
+        public static IEnumerable<Client> GetClients(string clientUrl, string productDetailApiUrl)
         {
             return new List<Client>
             {
@@ -76,7 +76,7 @@ namespace DNX.Identity
                     AllowAccessTokensViaBrowser = true,
                     RequireConsent = false,
                     // where to redirect to after login
-                    RedirectUris = { "http://localhost:5001/swagger/o2c.html" },
+                    RedirectUris = { $"{productDetailApiUrl}/swagger/o2c.html" },
 
                     AllowedScopes = new List<string>
                     {

@@ -13,7 +13,9 @@ using Microsoft.Extensions.Logging;
 using DNX.ProductDetail.API.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors;
 using Microsoft.AspNetCore.Mvc.Cors.Internal;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace DNX.ProductDetail.API
@@ -42,12 +44,23 @@ namespace DNX.ProductDetail.API
                 options.Filters.Add(new CorsAuthorizationFilterFactory("DnxPolicy"));
             });
 
+
             var builder = new ContainerBuilder();
 
-            //var connectionString = Configuration.GetConnectionString("DNXDatabaseOnAzure"); 
-            //var connectionString = Configuration.GetConnectionString("DNXDatabase");
-            var connectionString = Configuration["DNXDatabase"];
+            var connectionString = Configuration.GetConnectionString("DNXDatabase");
+            var identityServerUrl = Configuration.GetValue<string>("IdentityServerUrl");
             services.AddDbContext<DnxContext>(opts => opts.UseSqlServer(connectionString));
+
+
+            services.AddAuthentication("Bearer")
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = identityServerUrl;
+                    options.RequireHttpsMetadata = false;
+
+                    options.ApiName = "productdetail";
+                    options.ApiSecret = "productdetail-secret";
+                });
 
             services.AddSwaggerGen(c =>
             {
@@ -57,12 +70,12 @@ namespace DNX.ProductDetail.API
                 {
                     Type = "oauth2",
                     Flow = "implicit",
-                    AuthorizationUrl = $"{Configuration.GetValue<string>("IdentityServerUrl")}/connect/authorize",
+                    AuthorizationUrl = $"{identityServerUrl}/connect/authorize",
                     Scopes = new Dictionary<string, string>
                     {
                         { "productdetail", "ProductDetail API" }
                     },
-                    TokenUrl = $"{Configuration.GetValue<string>("IdentityServerUrl")}/token"
+                    TokenUrl = $"{identityServerUrl}/token"
                 });
             });
 
@@ -80,16 +93,16 @@ namespace DNX.ProductDetail.API
             loggerFactory.AddDebug();
 
             app.UseCors("DnxPolicy");
+            app.UseAuthentication();
+            //app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
+            //{
+            //    Authority = $"{Configuration.GetValue<string>("IdentityServerUrl")}",
+            //    RequireHttpsMetadata = false,
+            //    ApiName = "productdetail",
+            //    ApiSecret = "productdetail-secret",
+            //    AllowedScopes = { "productdetail", "openid", "email", "profile" },
 
-            app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
-            {
-                Authority = $"{Configuration.GetValue<string>("IdentityServerUrl")}",
-                RequireHttpsMetadata = false,
-                ApiName = "productdetail",
-                ApiSecret = "productdetail-secret",
-                AllowedScopes = { "productdetail", "openid", "email", "profile" },
-
-            });
+            //});
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();

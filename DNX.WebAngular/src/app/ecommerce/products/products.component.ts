@@ -1,7 +1,7 @@
 import { SelectAction } from "./../../state/actions/product";
 import { Router } from "@angular/router";
 import { ProductService } from "./../../services/product-service";
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
 import * as fromRoot from "../../state/reducers";
 import * as productActions from "../../state/actions/product";
@@ -10,20 +10,25 @@ import { Subject } from "rxjs/Subject";
 import "rxjs/add/operator/switchMap";
 import "rxjs/Rx";
 import { Observable } from "rxjs/Observable";
+import { AuthService } from "app/shared/auth-service/auth.service";
 @Component({
   selector: "app-products",
   templateUrl: "./products.component.html",
   styleUrls: ["./products.component.scss"]
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
   products: Product[] = [];
   subject: Subject<any> = new Subject();
-
+  isLoggedIn = false;
   constructor(
+    private authService: AuthService,
     private productService: ProductService,
     private store: Store<fromRoot.State>,
     private router: Router
-  ) {
+  ) {}
+
+  ngOnInit(): void {
+    this.authService.isLoggedIn().subscribe(result => this.isLoggedIn = result);
     this.subject
       .debounceTime(400)
       .distinctUntilChanged()
@@ -32,7 +37,7 @@ export class ProductsComponent {
         this.products = result;
         this.store.dispatch(new productActions.LoadAction(this.products));
       });
-    store.select(fromRoot.getProductsCollection).subscribe(result => {
+    this.store.select(fromRoot.getProductsCollection).subscribe(result => {
       if (result.length <= 0) {
         this.subject.next(10);
       } else {

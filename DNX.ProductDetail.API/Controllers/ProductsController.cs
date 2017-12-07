@@ -24,7 +24,6 @@ namespace DNX.ProductDetail.API.Controllers
 
         // GET: api/Products
         [HttpGet]
-        [AllowAnonymous]
         public IEnumerable<Product> GetProduct(string q)
         {
             var pagination = JsonConvert.DeserializeObject<Pagination>(q);

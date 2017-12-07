@@ -1,4 +1,5 @@
 <md-sidenav-container class="background-none shadow-none">
+
   <md-sidenav #productsnav [mode]="isOver() ? 'over' : 'side'" [opened]="!isOver()" class="pa-0 ma-0">
     <div class="pl-1 pr-1 pb-1">
       <h6>Price</h6>
@@ -62,6 +63,10 @@
     </button>
     <span class="mr-1 ml-1">Filter</span>
   </md-toolbar>
+
+  <div fxLayout="column" fxLayoutWrap="wrap">
+      <h2 class="mat-h2 mat-card-subtitle" fxFlexAlign="center" *ngIf="!isLoggedIn">You need to login to view products!</h2>
+  </div>
 
   <div fxLayout="row" fxLayoutWrap="wrap">
     <div fxFlex.gt-sm="25" fxFlex.gt-xs="33.3333%" fxFlex="100" *ngFor="let product of products">
