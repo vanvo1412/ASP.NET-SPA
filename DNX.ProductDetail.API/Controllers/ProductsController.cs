@@ -33,7 +33,6 @@ namespace DNX.ProductDetail.API.Controllers
 
         // GET: api/Products/5
         [HttpGet("{id}")]
-        [AllowAnonymous]
         public async Task<IActionResult> GetProduct([FromRoute] int id)
         {
             if (!ModelState.IsValid)

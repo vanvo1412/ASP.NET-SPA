@@ -1,3 +1,4 @@
+import { AuthGuard } from './../shared/auth-service/auth.guard';
 import { Routes } from '@angular/router';
 
 import { ProductsComponent } from './products/products.component';
@@ -16,7 +17,8 @@ export const EcommerceRoutes: Routes = [
       component: ProductsCompactComponent
     }, {
       path: 'detail/:id',
-      component: ProductDetailComponent
+      component: ProductDetailComponent,
+      canActivate: [AuthGuard]
     }]
   }
 ];
