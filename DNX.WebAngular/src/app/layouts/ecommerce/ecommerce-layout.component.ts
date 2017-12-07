@@ -1,19 +1,26 @@
-import { AuthService } from './../../shared/auth-service/auth.service';
-import { Component, OnInit, OnDestroy, ViewChild, HostListener, AfterViewInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { MenuItems } from '../../shared/menu-items/menu-items';
-import { Subscription } from 'rxjs/Subscription';
+import { AuthService } from "./../../shared/auth-service/auth.service";
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  HostListener,
+  AfterViewInit
+} from "@angular/core";
+import { Router, NavigationEnd } from "@angular/router";
+import { MenuItems } from "../../shared/menu-items/menu-items";
+import { Subscription } from "rxjs/Subscription";
 
-import { TranslateService } from 'ng2-translate/ng2-translate';
-import * as Ps from 'perfect-scrollbar';
-import { Observable } from 'rxjs';
+import { TranslateService } from "ng2-translate/ng2-translate";
+import * as Ps from "perfect-scrollbar";
+import { Observable } from "rxjs";
 
 @Component({
-  selector: 'ecommerce-layout',
-  templateUrl: './ecommerce-layout.component.html'
+  selector: "ecommerce-layout",
+  templateUrl: "./ecommerce-layout.component.html"
 })
-export class EcommerceLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
-
+export class EcommerceLayoutComponent
+  implements OnInit, OnDestroy, AfterViewInit {
   private _router: Subscription;
 
   today: number = Date.now();
@@ -23,50 +30,74 @@ export class EcommerceLayoutComponent implements OnInit, OnDestroy, AfterViewIni
   boxed: boolean;
   collapseSidebar: boolean;
   compactSidebar: boolean;
-  currentLang = 'en';
+  currentLang = "en";
   isLoggedIn: Observable<boolean>;
 
+  @ViewChild("sidemenu") sidemenu;
+  @ViewChild("root") root;
 
-  @ViewChild('sidemenu') sidemenu;
-  @ViewChild('root') root;
-
-  constructor(private router: Router, public menuItems: MenuItems, public translate: TranslateService, private authService: AuthService ) {
+  constructor(
+    private router: Router,
+    public menuItems: MenuItems,
+    public translate: TranslateService,
+    private authService: AuthService
+  ) {
     const browserLang: string = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
+    translate.use(browserLang.match(/en|fr/) ? browserLang : "en");
   }
 
   ngOnInit(): void {
-    const elemSidebar = <HTMLElement>document.querySelector('.app-inner > .sidebar-panel');
-    const elemContent = <HTMLElement>document.querySelector('.app-inner > .mat-sidenav-content');
+    const elemSidebar = <HTMLElement>document.querySelector(
+      ".app-inner > .sidebar-panel"
+    );
+    const elemContent = <HTMLElement>document.querySelector(
+      ".app-inner > .mat-sidenav-content"
+    );
 
-    if (window.matchMedia(`(min-width: 960px)`).matches && !this.isMac() && !this.compactSidebar) {
+    if (
+      window.matchMedia(`(min-width: 960px)`).matches &&
+      !this.isMac() &&
+      !this.compactSidebar
+    ) {
       Ps.initialize(elemSidebar, { wheelSpeed: 2, suppressScrollX: true });
       Ps.initialize(elemContent, { wheelSpeed: 2, suppressScrollX: true });
     }
 
-    this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
-      this.url = event.url;
-      if (this.isOver()) {
-        this.sidemenu.close();
-      }
+    this._router = this.router.events
+      .filter(event => event instanceof NavigationEnd)
+      .subscribe((event: NavigationEnd) => {
+        this.url = event.url;
+        if (this.isOver()) {
+          this.sidemenu.close();
+        }
 
-      if (window.matchMedia(`(min-width: 960px)`).matches && !this.isMac() && !this.compactSidebar) {
-        Ps.update(elemContent);
-      }
-    });
+        if (
+          window.matchMedia(`(min-width: 960px)`).matches &&
+          !this.isMac() &&
+          !this.compactSidebar
+        ) {
+          Ps.update(elemContent);
+        }
+      });
 
     this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   ngAfterViewInit() {
-    this.root.dir = 'ltr';
+    this.root.dir = "ltr";
   }
 
-  @HostListener('click', ['$event'])
+  @HostListener("click", ["$event"])
   onClick(e: any) {
-    const elemSidebar = <HTMLElement>document.querySelector('.app-inner > .sidebar-panel');
+    const elemSidebar = <HTMLElement>document.querySelector(
+      ".app-inner > .sidebar-panel"
+    );
     setTimeout(() => {
-      if (window.matchMedia(`(min-width: 960px)`).matches && !this.isMac() && !this.compactSidebar) {
+      if (
+        window.matchMedia(`(min-width: 960px)`).matches &&
+        !this.isMac() &&
+        !this.compactSidebar
+      ) {
         Ps.update(elemSidebar);
       }
     }, 350);
@@ -77,7 +108,12 @@ export class EcommerceLayoutComponent implements OnInit, OnDestroy, AfterViewIni
   }
 
   isOver(): boolean {
-    if (this.url === '/apps/messages' || this.url === '/apps/calendar' || this.url === '/apps/media' || this.url === '/maps/leaflet') {
+    if (
+      this.url === "/apps/messages" ||
+      this.url === "/apps/calendar" ||
+      this.url === "/apps/media" ||
+      this.url === "/maps/leaflet"
+    ) {
       return true;
     } else {
       return window.matchMedia(`(max-width: 960px)`).matches;
@@ -86,37 +122,50 @@ export class EcommerceLayoutComponent implements OnInit, OnDestroy, AfterViewIni
 
   isMac(): boolean {
     let bool = false;
-    if (navigator.platform.toUpperCase().indexOf('MAC') >= 0 || navigator.platform.toUpperCase().indexOf('IPAD') >= 0) {
+    if (
+      navigator.platform.toUpperCase().indexOf("MAC") >= 0 ||
+      navigator.platform.toUpperCase().indexOf("IPAD") >= 0
+    ) {
       bool = true;
     }
     return bool;
   }
 
-  login(){
+  login() {
     this.authService.startSigninMainWindow();
   }
 
+  logout() {
+    this.authService.startSignoutMainWindow();
+  }
+
   menuMouseOver(): void {
-    if (window.matchMedia(`(min-width: 960px)`).matches && this.collapseSidebar) {
-      this.sidemenu.mode = 'over';
+    if (
+      window.matchMedia(`(min-width: 960px)`).matches &&
+      this.collapseSidebar
+    ) {
+      this.sidemenu.mode = "over";
     }
   }
 
   menuMouseOut(): void {
-    if (window.matchMedia(`(min-width: 960px)`).matches && this.collapseSidebar) {
-      this.sidemenu.mode = 'side';
+    if (
+      window.matchMedia(`(min-width: 960px)`).matches &&
+      this.collapseSidebar
+    ) {
+      this.sidemenu.mode = "side";
     }
   }
 
   addMenuItem(): void {
     this.menuItems.add({
-      state: 'menu',
-      name: 'MENU',
-      type: 'sub',
-      icon: 'trending_flat',
+      state: "menu",
+      name: "MENU",
+      type: "sub",
+      icon: "trending_flat",
       children: [
-        {state: 'menu', name: 'MENU'},
-        {state: 'timelmenuine', name: 'MENU'}
+        { state: "menu", name: "MENU" },
+        { state: "timelmenuine", name: "MENU" }
       ]
     });
   }
